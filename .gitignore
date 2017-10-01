@@ -33,8 +33,11 @@ source
 # NetBeans Project files
 ########################
 */build
+build/
+dist/
 */dist
 */nbproject/private
+nbproject/private
 .Trashes
 ehthumbs.db
 Thumbs.db
