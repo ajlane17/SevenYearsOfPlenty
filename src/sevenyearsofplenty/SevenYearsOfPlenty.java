@@ -6,6 +6,8 @@
 package sevenyearsofplenty;
 
 import byui.cit260.sevenyearsofplenty.model.Player;
+import byui.cit260.sevenyearsofplenty.model.Crops;
+import byui.cit260.sevenyearsofplenty.model.Game;
 
 /**
  *
@@ -17,6 +19,8 @@ public class SevenYearsOfPlenty {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        // Create a Player object
         Player playerOne = new Player();
         
         playerOne.setName("Fred Flinstone");
@@ -24,6 +28,22 @@ public class SevenYearsOfPlenty {
         String playerOneName = playerOne.getName();
         
         System.out.println(playerOne.toString());
+        
+        // Create a Crop object
+        Crops cropsOne = new Crops();
+        
+        cropsOne.setAcres(5);
+        cropsOne.setNewPeople(1000);
+        
+        System.out.println(cropsOne.toString());
+        
+        // Create a game object
+        Game gameOne = new Game();
+        
+        gameOne.setCrops(cropsOne);
+        
+        System.out.println(gameOne.toString());
+        
         
         
     }
