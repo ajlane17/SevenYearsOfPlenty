@@ -15,6 +15,7 @@ public class Game {
     
     // Define instance variables
     private Crops crops;
+    private InventoryItem inventoryItem;
     
     public Game() {
     }
@@ -27,6 +28,16 @@ public class Game {
     public void setCrops(Crops crops) {
         this.crops = crops;
     }
+
+    public InventoryItem getInventoryItem() {
+        return inventoryItem;
+    }
+
+    public void setInventoryItem(InventoryItem inventoryItem) {
+        this.inventoryItem = inventoryItem;
+    }
+    
+    
 
     @Override
     public int hashCode() {
