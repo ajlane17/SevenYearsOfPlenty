@@ -5,6 +5,7 @@
  */
 package byui.cit260.sevenyearsofplenty.model;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -15,7 +16,7 @@ public class Game {
     
     // Define instance variables
     private Crops crops;
-    private InventoryItem inventoryItem;
+    private ArrayList<InventoryItem> inventoryItem = new ArrayList<InventoryItem>();
     
     public Game() {
     }
@@ -29,16 +30,16 @@ public class Game {
         this.crops = crops;
     }
 
-    public InventoryItem getInventoryItem() {
+    public ArrayList<InventoryItem> getInventoryItem() {
         return inventoryItem;
     }
 
-    public void setInventoryItem(InventoryItem inventoryItem) {
+    public void setInventoryItem(ArrayList<InventoryItem> inventoryItem) {
         this.inventoryItem = inventoryItem;
     }
-    
-    
 
+    
+    
     @Override
     public int hashCode() {
         int hash = 3;
