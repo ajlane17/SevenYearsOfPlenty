@@ -13,14 +13,15 @@ import java.util.Objects;
  * @author Adrian, Dennis, Vanessa
  */
 public class Game {
-    
+
     // Define instance variables
     private Crops crops;
     private ArrayList<InventoryItem> inventoryItem = new ArrayList<InventoryItem>();
+    private  PlayerMap playerMap;
+    
     
     public Game() {
     }
-    
 
     public Crops getCrops() {
         return crops;
@@ -38,8 +39,15 @@ public class Game {
         this.inventoryItem = inventoryItem;
     }
 
-    
-    
+    public PlayerMap getPlayerMap() {
+        return playerMap;
+    }
+
+    public void setPlayerMap(PlayerMap playerMap) {
+        this.playerMap = playerMap;
+    }
+
+
     @Override
     public int hashCode() {
         int hash = 3;
@@ -64,11 +72,10 @@ public class Game {
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
         return "Game{" + "crops=" + crops + '}';
     }
 
-    
 }
