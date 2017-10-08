@@ -8,6 +8,7 @@ package sevenyearsofplenty;
 import byui.cit260.sevenyearsofplenty.model.Player;
 import byui.cit260.sevenyearsofplenty.model.Crops;
 import byui.cit260.sevenyearsofplenty.model.Game;
+import byui.cit260.sevenyearsofplenty.model.InventoryItem;
 import byui.cit260.sevenyearsofplenty.model.Location;
 import byui.cit260.sevenyearsofplenty.model.PlayerMap;
 /**
@@ -46,20 +47,25 @@ public class SevenYearsOfPlenty {
         System.out.println(gameOne.toString());
         
         
-        // Create a location
+        // Create a location object
         Location location = new Location();
         
         location.setColumn(5);
         location.setRow(5);
+        System.out.println(location.toString());
         
-        //create PlayerMap
+        //create PlayerMap object
         PlayerMap mapOne = new PlayerMap();
         
         mapOne.setRowCount(1);
         mapOne.setLocation(location);
         System.out.println(mapOne.toString());
         
+        // Create an InventoryItem object
+        InventoryItem inventoryItem = new InventoryItem();
         
+        inventoryItem.setQuantity(23);
+        System.out.println(inventoryItem.toString());
         
     }
     
