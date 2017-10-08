@@ -21,6 +21,7 @@ public class PlayerMap implements Serializable {
 
 private int rowCount;
 private int colCount;
+private Location location = new Location();
 
 
 
@@ -56,5 +57,20 @@ public PlayerMap(){
     public void setColCount(int colCount) {
         this.colCount = colCount;
     }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerMap{" + "rowCount=" + rowCount + ", colCount=" 
+                + colCount + ", location=" + location + '}';
+    }
+    
 
 }
