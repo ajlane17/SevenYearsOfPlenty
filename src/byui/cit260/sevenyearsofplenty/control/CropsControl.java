@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class CropsControl {
     
-    public static int payPharoah (Crops theCropsObj) {
+    public static void payPharoah (Crops theCropsObj) {
         int taxLow = 6;
         int taxHigh = 18;
         int harvest = theCropsObj.getHarvest();
@@ -24,9 +24,8 @@ public class CropsControl {
             // calculate new yield after Pharoah’s cut
             float newYield = (100-taxRate)/100*(float)harvest;
             theCropsObj.setHarvest((int)newYield);
-            return (int)newYield;
         } else {
-            return -1;
+            throw new IllegalArgumentException("Can't do that");
         }
     }
     
@@ -46,5 +45,18 @@ public class CropsControl {
             
             return wheatInStore;
         }            
+    }
+    
+    public static void plantCrops(int cropsToPlant, Crops theCropsObj) {
+        
+        int wheatInStore = theCropsObj.getWheatInStore();
+        int acres = theCropsObj.getAcres();
+        // if cropsToPlant greater than whheat in store, return -1
+        // if cropsToPlant greater than acres owned, return -1
+        if (cropsToPlant > wheatInStore || cropsToPlant > acres) {
+            throw new IllegalArgumentException("Can't do that");
+        } else {
+            theCropsObj.setPlanted(cropsToPlant);
+        }
     }
 }
