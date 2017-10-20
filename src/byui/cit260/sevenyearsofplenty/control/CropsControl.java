@@ -51,8 +51,6 @@ public class CropsControl {
         
         int wheatInStore = theCropsObj.getWheatInStore();
         int acres = theCropsObj.getAcres();
-        // if cropsToPlant greater than whheat in store, return -1
-        // if cropsToPlant greater than acres owned, return -1
         if (cropsToPlant > wheatInStore || cropsToPlant > acres) {
             throw new IllegalArgumentException("Can't do that");
         } else {
