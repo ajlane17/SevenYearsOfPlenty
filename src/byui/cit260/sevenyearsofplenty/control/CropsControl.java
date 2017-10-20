@@ -14,14 +14,16 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class CropsControl {
     
-    public static int payPharoah (int cropYield) {
+    public static int payPharoah (Crops theCropsObj) {
         int taxLow = 6;
         int taxHigh = 18;
-        if (cropYield >= 0) {
+        int harvest = theCropsObj.getHarvest();
+        if (harvest >= 0) {
             // generate tax rate
             float taxRate = ThreadLocalRandom.current().nextInt(taxLow, taxHigh + 1);
             // calculate new yield after Pharoah’s cut
-            float newYield = (100-taxRate)/100*(float)cropYield;
+            float newYield = (100-taxRate)/100*(float)harvest;
+            theCropsObj.setHarvest((int)newYield);
             return (int)newYield;
         } else {
             return -1;
