@@ -5,6 +5,7 @@
  */
 package byui.cit260.sevenyearsofplenty.control;
 
+import byui.cit260.sevenyearsofplenty.model.Crops;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -27,4 +28,21 @@ public class CropsControl {
         }
     }
     
+    public static int buyLand(int landPrice, int acresToBuy, Crops theCropsObj){
+        
+        int wheatInStore = theCropsObj.getWheatInStore();
+        int acresOwned = theCropsObj.getAcres();
+        
+        if (acresToBuy < 0 || acresToBuy * landPrice > wheatInStore){
+            return -1;
+        } else {
+            acresOwned = acresOwned + acresToBuy;
+            theCropsObj.setAcres(acresOwned);
+            
+            wheatInStore = wheatInStore - (acresToBuy * landPrice);
+            theCropsObj.setWheatInStore(wheatInStore);
+            
+            return wheatInStore;
+        }            
+    }
 }
