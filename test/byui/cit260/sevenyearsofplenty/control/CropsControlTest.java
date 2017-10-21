@@ -7,8 +7,10 @@ package byui.cit260.sevenyearsofplenty.control;
 
 import byui.cit260.sevenyearsofplenty.model.Crops;
 import static org.hamcrest.CoreMatchers.is;
+import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.BeforeClass;
 
 /**
  *
@@ -17,6 +19,14 @@ import static org.junit.Assert.*;
 public class CropsControlTest {
     
     public CropsControlTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
     }
 
     /**
@@ -223,4 +233,103 @@ public class CropsControlTest {
         assertEquals(expResult, result);
         
     }    
+    
+    /** 
+     * Test of sellLand method, of class CropsControl. 
+     */ 
+    @Test 
+    public void testSellLand() { 
+        Crops testSellLandCropsObj = new Crops(); 
+        int landPrice; 
+        int acresToSell; 
+        int expResult; 
+        int result; 
+         
+        // Test Case #1 
+        System.out.println("sellLand #1"); 
+        landPrice = 20; 
+        acresToSell = 20; 
+        testSellLandCropsObj.setWheatInStore(2000); 
+        expResult = -1; 
+        result = CropsControl.sellLand(landPrice, acresToSell, testSellLandCropsObj); 
+        assertEquals(expResult, result); 
+         
+        // Test Case #2 
+        System.out.println("sellLand #2"); 
+        landPrice = 20; 
+        acresToSell = -5; 
+        testSellLandCropsObj.setWheatInStore(2000); 
+        expResult = -1; 
+        result = CropsControl.sellLand(landPrice, acresToSell, testSellLandCropsObj); 
+        assertEquals(expResult, result);         
+       
+        // Test Case #3 
+        System.out.println("sellLand #3"); 
+        landPrice = 20; 
+        acresToSell = 250; 
+        testSellLandCropsObj.setWheatInStore(2000); 
+        expResult = -1; 
+        result = CropsControl.sellLand(landPrice, acresToSell, testSellLandCropsObj); 
+        assertEquals(expResult, result); 
+         
+        // Test Case #4 
+        System.out.println("sellLand #4"); 
+        landPrice = 20; 
+        acresToSell = 0; 
+        testSellLandCropsObj.setWheatInStore(2000); 
+        expResult = 2000; 
+        result = CropsControl.sellLand(landPrice, acresToSell, testSellLandCropsObj); 
+        assertEquals(expResult, result); 
+         
+        // Test Case #5 
+        System.out.println("sellLand #5"); 
+        landPrice = 20; 
+        acresToSell = 200; 
+        testSellLandCropsObj.setWheatInStore(2000); 
+        expResult = -1; 
+        result = CropsControl.sellLand(landPrice, acresToSell, testSellLandCropsObj); 
+        assertEquals(expResult, result); 
+    } 
+
+    /**
+     * Test of harvestCrops method, of class CropsControl.
+     */
+    @Test 
+    public void testHarvestCrops() { 
+        Crops testHarvestCropsObj = new Crops(); 
+        int ratTax;
+        int expResult; 
+        int result; 
+        
+        // Test Case #1                 
+        System.out.println("harvestCrops #1"); 
+        ratTax = 1;
+        expResult = 0; 
+        result = testHarvestCropsObj.getHarvest(); 
+        assertEquals(expResult, result); 
+        
+        // Test Case #2
+        System.out.println("harvestCrops #2"); 
+        ratTax = 2;
+        result = testHarvestCropsObj.getHarvest(); 
+        assertEquals(expResult, result); 
+        
+        // Test Case #3
+        System.out.println("harvestCrops #2"); 
+        ratTax = 3;
+        result = testHarvestCropsObj.getHarvest(); 
+        assertEquals(expResult, result); 
+        
+        // Test Case #4
+        System.out.println("harvestCrops #2"); 
+        ratTax = 4;
+        result = testHarvestCropsObj.getHarvest(); 
+        assertEquals(expResult, result); 
+        
+        // Test Case #5 
+        System.out.println("harvestCrops #2"); 
+        ratTax = 5;
+        result = testHarvestCropsObj.getHarvest(); 
+        assertEquals(expResult, result); 
+    }
 }

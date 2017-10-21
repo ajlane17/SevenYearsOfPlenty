@@ -57,4 +57,63 @@ public class CropsControl {
             theCropsObj.setPlanted(cropsToPlant);
         }
     }
+    
+    public static int sellLand(int landPrice, int acresToSell, Crops theCropsObj){ 
+        int wheatInStore = theCropsObj.getWheatInStore(); 
+        int acresOwned = theCropsObj.getAcres(); 
+         
+        if(acresToSell < 0 || acresToSell > acresOwned){ 
+            return -1; 
+        } else { 
+            acresOwned = acresOwned - acresToSell; 
+            theCropsObj.setAcres(acresOwned); 
+             
+            wheatInStore = wheatInStore + (acresToSell * landPrice); 
+            theCropsObj.setWheatInStore(wheatInStore); 
+             
+            return wheatInStore; 
+        } 
+    }
+    
+    public static int harvestCrops(Crops theCropsObj) { 
+        int planted = theCropsObj.getPlanted(); 
+        int wheatInStore = theCropsObj.getWheatInStore(); 
+        int ratTaxLow = 10; 
+        int ratTaxHigh = 15; 
+        int yieldLow = 1; 
+        int yieldHigh = 5; 
+        int harvest; 
+        float yield; 
+        int cropYield; 
+        boolean rats; 
+        float ratTax; 
+         
+        //Getting crop yield 
+        yield = ThreadLocalRandom.current().nextInt(yieldLow, yieldHigh +1); 
+         
+        //Calculate total cropYield 
+        cropYield = planted * (int)yield; 
+         
+        //Rats eat 
+        rats = Math.random() < 0.5; 
+         
+        //Calculate how much did rats eat 
+        if (rats){ 
+            ratTax = ThreadLocalRandom.current() .nextInt(ratTaxLow, ratTaxHigh +1); 
+            ratTax = ratTax/100; 
+            harvest = cropYield - (int)ratTax; 
+        }else{ 
+            harvest = cropYield; 
+            ratTax = 0; 
+        } 
+         
+        //Update the crops object 
+        theCropsObj.setCropYield(cropYield); 
+        theCropsObj.setHarvest(harvest); 
+        theCropsObj.setWheatInStore(harvest); 
+         
+        return (int)ratTax; 
+    } 
+    
+    
 }
