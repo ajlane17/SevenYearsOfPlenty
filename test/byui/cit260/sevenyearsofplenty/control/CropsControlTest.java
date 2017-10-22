@@ -36,42 +36,56 @@ public class CropsControlTest {
     public void testPayPharoah() {
         
         Crops payPharoahCropsObj = new Crops();
-        int low;
-        int high;
-        int expResult;
-        int result;
+        int pharoahsShareLow;
+        int pharoahsShareHigh;
+        int wheatInStoreLow;
+        int wheatInStoreHigh;
+        int wheatInStoreExpResult;
+        int pharoahsShareExpResult;
+        int wheatInStoreResult;
+        int pharoahsShareResult;
         
         // Test Case #1 
         System.out.println("payPharoah #1");
-        payPharoahCropsObj.setHarvest(1);
-        expResult = 0;
+        payPharoahCropsObj.setWheatInStore(1);
+        wheatInStoreExpResult = 1;
         CropsControl.payPharoah(payPharoahCropsObj);
-        result = payPharoahCropsObj.getHarvest();
-        assertEquals(expResult, result);
+        wheatInStoreResult = payPharoahCropsObj.getWheatInStore();
+        assertEquals(wheatInStoreExpResult, wheatInStoreResult);
         
         // Test Case #2        
         System.out.println("payPharoah #2");
-        payPharoahCropsObj.setHarvest(234);
-        low = 191;
-        high = 219;
+        payPharoahCropsObj.setWheatInStore(234);
+        pharoahsShareLow = 18;
+        pharoahsShareHigh = 23;
+        wheatInStoreLow = 211;
+        wheatInStoreHigh = 216;
         CropsControl.payPharoah(payPharoahCropsObj);
-        result = payPharoahCropsObj.getHarvest();
-        assertTrue("Error, result is too low", low <= result);
-        assertTrue("Error, result is too high", high >= result);
+        pharoahsShareResult = payPharoahCropsObj.getPharoahsShare();
+        wheatInStoreResult = payPharoahCropsObj.getWheatInStore();
+        assertTrue("Error, result is too low", pharoahsShareResult >= pharoahsShareLow);
+        assertTrue("Error, result is too high", pharoahsShareResult <= pharoahsShareHigh);
+        assertTrue("Error, result is too low", wheatInStoreResult >= wheatInStoreLow);
+        assertTrue("Error, result is too high", wheatInStoreResult <= wheatInStoreHigh);
         
         // Test Case #3
         System.out.println("payPharoah #3");
-        payPharoahCropsObj.setHarvest(1000);
-        low = 820;
-        high = 940;
+        payPharoahCropsObj.setWheatInStore(1000);
+        pharoahsShareLow = 80;
+        pharoahsShareHigh = 100;
+        wheatInStoreLow = 900;
+        wheatInStoreHigh = 920;
         CropsControl.payPharoah(payPharoahCropsObj);
-        result = payPharoahCropsObj.getHarvest();
-        assertTrue("Error, result is too low", low <= result);
-        assertTrue("Error, result is too high", high >= result);
+        pharoahsShareResult = payPharoahCropsObj.getPharoahsShare();
+        wheatInStoreResult = payPharoahCropsObj.getWheatInStore();
+        assertTrue("Error, result is too low", pharoahsShareResult >= pharoahsShareLow);
+        assertTrue("Error, result is too high", pharoahsShareResult <= pharoahsShareHigh);
+        assertTrue("Error, result is too low", wheatInStoreResult >= wheatInStoreLow);
+        assertTrue("Error, result is too high", wheatInStoreResult <= wheatInStoreHigh);
         
         // Test Case #4
         System.out.println("payPharoah #4");
-        payPharoahCropsObj.setHarvest(-100);
+        payPharoahCropsObj.setWheatInStore(-100);
         try {
             CropsControl.payPharoah(payPharoahCropsObj);
         } catch (Exception e) {
@@ -80,11 +94,11 @@ public class CropsControlTest {
         
         // Test Case #5
         System.out.println("payPharoah #5");
-        payPharoahCropsObj.setHarvest(0);
-        expResult = 0;
+        payPharoahCropsObj.setWheatInStore(0);
+        wheatInStoreExpResult = 0;
         CropsControl.payPharoah(payPharoahCropsObj);
-        result = payPharoahCropsObj.getHarvest();
-        assertEquals(expResult, result);
+        wheatInStoreResult = payPharoahCropsObj.getWheatInStore();
+        assertEquals(wheatInStoreExpResult, wheatInStoreResult);
     }
 
     /**
