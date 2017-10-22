@@ -15,15 +15,20 @@ import java.util.concurrent.ThreadLocalRandom;
 public class CropsControl {
     
     public static void payPharoah (Crops theCropsObj) {
-        int taxLow = 6;
-        int taxHigh = 18;
-        int harvest = theCropsObj.getHarvest();
-        if (harvest >= 0) {
+        int taxLow = 8;
+        int taxHigh = 10;
+        float taxRate;
+        int pharoahsShare;
+        int wheatInStore = theCropsObj.getWheatInStore();
+        if (wheatInStore >= 0) {
             // generate tax rate
-            float taxRate = ThreadLocalRandom.current().nextInt(taxLow, taxHigh + 1);
-            // calculate new yield after Pharoah’s cut
-            float newYield = (100-taxRate)/100*(float)harvest;
-            theCropsObj.setHarvest((int)newYield);
+            taxRate = ThreadLocalRandom.current().nextInt(taxLow, taxHigh + 1);
+            taxRate = taxRate/100;
+            // calculate Pharoah’s share
+            pharoahsShare = (int)(wheatInStore * taxRate);
+            // Update Crops object
+            theCropsObj.setPharoahsShare(pharoahsShare);
+            theCropsObj.setWheatInStore(wheatInStore - pharoahsShare);
         } else {
             throw new IllegalArgumentException("Can't do that");
         }
