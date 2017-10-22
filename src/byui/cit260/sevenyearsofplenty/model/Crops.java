@@ -16,7 +16,7 @@ public class Crops implements Serializable {
     
     // Class instance variables
     private int year;
-    private int population;
+    private int currPopulation;
     private int acres;
     private int cropYield;
     private int wheatInStore;
@@ -26,7 +26,8 @@ public class Crops implements Serializable {
     private int pharoahsShare;
     private int fed;
     private int planted;
-    private ArrayList<Game> games = new ArrayList<Game>();
+    private int starvedPeople;
+    private ArrayList<Game> games = new ArrayList<>();
 
     public Crops() {
     }
@@ -39,13 +40,22 @@ public class Crops implements Serializable {
     public void setYear(int year) {
         this.year = year;
     }
-
+    
+    public int setStarvedPeople(int newStarvedPeople) {
+        starvedPeople = newStarvedPeople;
+        return starvedPeople;
+    }
+    
+    public int getStarvedPeople(){
+        return starvedPeople;
+    }
+    
     public int getPopulation() {
-        return population;
+        return currPopulation;
     }
 
-    public void setPopulation(int population) {
-        this.population = population;
+    public void setPopulation(int newPopulation) {
+        currPopulation = newPopulation;
     }
 
     public int getAcres() {
@@ -132,7 +142,7 @@ public class Crops implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 61 * hash + this.year;
-        hash = 61 * hash + this.population;
+        hash = 61 * hash + this.currPopulation;
         hash = 61 * hash + this.acres;
         hash = 61 * hash + this.cropYield;
         hash = 61 * hash + this.wheatInStore;
@@ -160,7 +170,7 @@ public class Crops implements Serializable {
         if (this.year != other.year) {
             return false;
         }
-        if (this.population != other.population) {
+        if (this.currPopulation != other.currPopulation) {
             return false;
         }
         if (this.acres != other.acres) {
@@ -195,7 +205,7 @@ public class Crops implements Serializable {
 
     @Override
     public String toString() {
-        return "Crops{" + "year=" + year + ", population=" + population
+        return "Crops{" + "year=" + year + ", population=" + currPopulation
                 + ", acres=" + acres + ", cropYield=" + cropYield 
                 + ", wheatInStore=" + wheatInStore + ", numberWhoDied=" 
                 + numberWhoDied + ", newPeople=" + newPeople + ", harvest=" 
