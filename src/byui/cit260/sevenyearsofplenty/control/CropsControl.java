@@ -33,23 +33,23 @@ public class CropsControl {
             throw new IllegalArgumentException("Can't do that");
         }
     }
-    
-    public static int buyLand(int landPrice, int acresToBuy, Crops theCropsObj){
-        
+
+    public static int buyLand(int landPrice, int acresToBuy, Crops theCropsObj) {
+
         int wheatInStore = theCropsObj.getWheatInStore();
         int acresOwned = theCropsObj.getAcres();
-        
-        if (acresToBuy < 0 || acresToBuy * landPrice > wheatInStore){
+
+        if (acresToBuy < 0 || acresToBuy * landPrice > wheatInStore) {
             return -1;
         } else {
             acresOwned = acresOwned + acresToBuy;
             theCropsObj.setAcres(acresOwned);
-            
+
             wheatInStore = wheatInStore - (acresToBuy * landPrice);
             theCropsObj.setWheatInStore(wheatInStore);
-            
+
             return wheatInStore;
-        }            
+        }
     }
     
     public static void plantCrops(int cropsToPlant, Crops theCropsObj) {
@@ -121,4 +121,31 @@ public class CropsControl {
     } 
     
     
+
+        //reqNutrition is how much each Member of the Population needs each year
+    //to be sustained.  
+    public static int feedPeople(int reqNutrition, int feedAmount, Crops theCropsObj) {
+        int wheatInStore = theCropsObj.getWheatInStore();
+        int currPopulation = theCropsObj.getPopulation();
+        float productivity;
+
+        if (feedAmount <= 0 || wheatInStore <= 0 || currPopulation <= 0
+                || reqNutrition <= 0 || reqNutrition > feedAmount || feedAmount > wheatInStore) {
+            return -1;
+        } else {
+            theCropsObj.setWheatInStore(wheatInStore -= feedAmount);
+            int fedPopulation = feedAmount / reqNutrition;
+
+            if (fedPopulation > currPopulation) {
+                productivity = fedPopulation / currPopulation;
+            } else {
+                theCropsObj.setStarvedPeople(currPopulation - fedPopulation);
+                currPopulation = fedPopulation;
+                theCropsObj.setPopulation(currPopulation);
+            }
+
+            return currPopulation;
+        }
+
+    }
 }

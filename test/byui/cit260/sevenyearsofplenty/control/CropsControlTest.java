@@ -17,7 +17,9 @@ import org.junit.BeforeClass;
  * @author ajlan
  */
 public class CropsControlTest {
-    
+
+    private Object theCropsObj;
+
     public CropsControlTest() {
     }
 
@@ -112,7 +114,7 @@ public class CropsControlTest {
         int acresToBuy;
         int expResult;
         int result;
-        
+
         // Test Case #1
         System.out.println("buyLand #1");
         landPrice = 20;
@@ -121,7 +123,7 @@ public class CropsControlTest {
         expResult = 2600;
         result = CropsControl.buyLand(landPrice, acresToBuy, testBuyLandCropsObj);
         assertEquals(expResult, result);
-        
+
         // Test Case #2
         System.out.println("buyLand #2");
         landPrice = 20;
@@ -345,5 +347,35 @@ public class CropsControlTest {
         ratTax = 5;
         result = testHarvestCropsObj.getHarvest(); 
         assertEquals(expResult, result); 
+    }
+
+    @Test
+    public void feedPeople() {
+
+        Crops theCropsObj = new Crops();
+        int feedAmount;
+        int reqNutrition;
+        int result;
+        int expResult;
+
+        // test case #1
+        System.out.println("feedPeople #1");
+        reqNutrition = 10; //this is per Person to live for the year
+        feedAmount = 1000; //this is how much will be distributed
+        theCropsObj.setWheatInStore(1050);
+        theCropsObj.setPopulation(101);
+        System.out.println("wheatInStore was : " + theCropsObj.getWheatInStore());
+        System.out.println("the Population was : " + theCropsObj.getPopulation());
+        expResult = 100;
+        result = CropsControl.feedPeople(reqNutrition, feedAmount, theCropsObj);
+        assertEquals(expResult, result);
+        int newPopulation = theCropsObj.getPopulation();
+        int newWheatInStore = theCropsObj.getWheatInStore();
+        System.out.println("           wheatInStore: " + newWheatInStore);
+        System.out.println("              fedPeople: " + result);
+        System.out.println("          starvedPeople: " + theCropsObj.getStarvedPeople());
+        System.out.println("         new Population: " + newPopulation);
+
+     
     }
 }
