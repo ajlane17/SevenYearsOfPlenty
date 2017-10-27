@@ -18,7 +18,15 @@ public class Game {
     private Crops crops;
     private ArrayList<InventoryItem> inventoryItem = new ArrayList<InventoryItem>();
     private  PlayerMap playerMap;
-    private Crops theCrops = null;
+    private Player player = null;
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player thePlayer) {
+        this.player = thePlayer;
+    }
     
     
     public Game() {

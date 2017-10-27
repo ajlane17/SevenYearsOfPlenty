@@ -10,6 +10,7 @@ import byui.cit260.sevenyearsofplenty.model.Game;
 import byui.cit260.sevenyearsofplenty.control.CropsControl;
 import byui.cit260.sevenyearsofplenty.control.GameControl;
 import java.util.Scanner;
+import sevenyearsofplenty.SevenYearsOfPlenty;
         
 
 /**
@@ -22,8 +23,8 @@ public class CropsView {
     private static Scanner keyboard = new Scanner(System.in);
     
     // Get references to the Game object and the Crops object
-    private static Game theGame = MyGameProject.getGame();
-    private static Crops theCrop = MyGameProject.getCrops();
+    private static Game theGame = SevenYearsOfPlenty.getGame();
+    private static Crops theCrop = theGame.getCrops();
 
     // The startProgramView method
     // Purpose: Start the game
@@ -46,7 +47,7 @@ public class CropsView {
     
      public static void displayNextView()
     {
-        MenuView.displayMainMenu(); 
+        StartMenuView.displayGameMenu(); 
 
         // control returns to this point when user exits main menu
         // goodbye message

@@ -148,4 +148,7 @@ public class CropsControl {
         }
 
     }
+    public static int calcLandCost() {
+        return 10;
+    }
 }

@@ -6,6 +6,8 @@
 package byui.cit260.sevenyearsofplenty.control;
 
 import byui.cit260.sevenyearsofplenty.model.Crops;
+import byui.cit260.sevenyearsofplenty.model.Player;
+import sevenyearsofplenty.SevenYearsOfPlenty;
 
 /**
  *
@@ -17,7 +19,7 @@ public class GameControl {
     // Purpose: to create a Crops object for the game
     // Parameters: none
     // Returns: none
-    public static void createCrops( )
+    public static void createCrops()
     {
         Crops theCrops = new Crops();
         
@@ -34,8 +36,12 @@ public class GameControl {
         theCrops.setPlanted(1000);
         theCrops.setFed(0);
 
-        DeBryGameProject.setCrops(theCrops);
-}
-
+        SevenYearsOfPlenty.getGame().setCrops(theCrops);
+    }
     
+    public static void createPlayer(String playerName){
+        Player thePlayer = new Player();
+        thePlayer.setName(playerName);
+        SevenYearsOfPlenty.getGame().setPlayer(thePlayer);
+    }
 }
