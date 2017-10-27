@@ -11,4 +11,30 @@ package byui.cit260.sevenyearsofplenty.view;
  */
 public class MenuView {
     
+    public static void displaySomeMenu()
+    {
+       int option;
+        do
+        {
+            System.out.println(THE_MENU);
+            option = getUserInput();
+            doAction(option);
+        }while(option != MAX);
+    }
+    
+    public static int getMenuOption()
+    {
+        int inputValue = 0;
+        do
+        {
+          System.out.print("Please enter an option:");
+          inputValue = keyboard.nextInt();
+          if(inputValue < 1 || inputValue > MAX)
+          {
+              System.out.println("Error: invalid option.");
+          }
+        } while(inputValue < 1 || inputValue > MAX);
+        
+        return inputValue;
+    }
 }

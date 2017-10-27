@@ -32,7 +32,7 @@ public class GameControl {
         theCrops.setAcres(1000);
         theCrops.setHarvest(0);
         theCrops.setPlanted(1000);
-        theCrops.setFood(0);
+        theCrops.setFed(0);
 
         DeBryGameProject.setCrops(theCrops);
 }

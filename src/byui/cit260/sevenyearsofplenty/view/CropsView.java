@@ -8,6 +8,7 @@ package byui.cit260.sevenyearsofplenty.view;
 import byui.cit260.sevenyearsofplenty.model.Crops;
 import byui.cit260.sevenyearsofplenty.model.Game;
 import byui.cit260.sevenyearsofplenty.control.CropsControl;
+import byui.cit260.sevenyearsofplenty.control.GameControl;
 import java.util.Scanner;
         
 
@@ -24,6 +25,51 @@ public class CropsView {
     private static Game theGame = MyGameProject.getGame();
     private static Crops theCrop = MyGameProject.getCrops();
 
+    // The startProgramView method
+    // Purpose: Start the game
+    // Parameters: None
+    // Returns: none
+    public static void displayStartProgramView()
+    {
+        String playerName = getPlayersName();
+        GameControl.createPlayer(playerName);
+
+        GameControl.createCrops();
+
+        System.out.println("\n\n\n\n");
+        System.out.println(playerName + ", you have been appointed overseer for your");
+        System.out.println("village. Tread carefully, if your people are not fed well");
+        System.out.println("you may lose your head.");
+        
+        displayNextView();
+    }
+    
+     public static void displayNextView()
+    {
+        MenuView.displayMainMenu(); 
+
+        // control returns to this point when user exits main menu
+        // goodbye message
+        System.out.println("Goodbye ... thanks for playing.");
+    }
+    
+    public static String getPlayersName()
+    {
+        String playerName = "";
+        Scanner keyboard = new Scanner(System.in);
+        do
+        {
+            System.out.print("Please enter your name: ");
+            playerName = keyboard.nextLine();
+            playerName = playerName.trim();
+            if(playerName.length() < 2) // must have at least 2 characters
+                System.out.println("Invalid input: name must be at least 2 characters");
+
+        } while(playerName.length() < 2);  // must have at least 2 characters
+
+        return playerName;
+    }
+    
     public static void buyLandView()
     {
          int toBuy = 0;
