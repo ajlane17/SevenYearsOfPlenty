@@ -18,6 +18,7 @@ public class Game {
     private Crops crops;
     private ArrayList<InventoryItem> inventoryItem = new ArrayList<InventoryItem>();
     private  PlayerMap playerMap;
+    private Crops theCrops = null;
     
     
     public Game() {

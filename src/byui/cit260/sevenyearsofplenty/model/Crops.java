@@ -16,7 +16,7 @@ public class Crops implements Serializable {
     
     // Class instance variables
     private int year;
-    private int currPopulation;
+    private int Population;
     private int acres;
     private int cropYield;
     private int wheatInStore;
@@ -51,11 +51,11 @@ public class Crops implements Serializable {
     }
     
     public int getPopulation() {
-        return currPopulation;
+        return Population;
     }
 
     public void setPopulation(int newPopulation) {
-        currPopulation = newPopulation;
+        Population = newPopulation;
     }
 
     public int getAcres() {
@@ -142,7 +142,7 @@ public class Crops implements Serializable {
     public int hashCode() {
         int hash = 7;
         hash = 61 * hash + this.year;
-        hash = 61 * hash + this.currPopulation;
+        hash = 61 * hash + this.Population;
         hash = 61 * hash + this.acres;
         hash = 61 * hash + this.cropYield;
         hash = 61 * hash + this.wheatInStore;
@@ -170,7 +170,7 @@ public class Crops implements Serializable {
         if (this.year != other.year) {
             return false;
         }
-        if (this.currPopulation != other.currPopulation) {
+        if (this.Population != other.Population) {
             return false;
         }
         if (this.acres != other.acres) {
@@ -205,7 +205,7 @@ public class Crops implements Serializable {
 
     @Override
     public String toString() {
-        return "Crops{" + "year=" + year + ", population=" + currPopulation
+        return "Crops{" + "year=" + year + ", population=" + Population
                 + ", acres=" + acres + ", cropYield=" + cropYield 
                 + ", wheatInStore=" + wheatInStore + ", numberWhoDied=" 
                 + numberWhoDied + ", newPeople=" + newPeople + ", harvest=" 
