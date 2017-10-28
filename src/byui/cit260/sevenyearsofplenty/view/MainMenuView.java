@@ -73,5 +73,16 @@ public class MainMenuView {
             case 5: MainMenuView.displayMainMenu();
             break;
         }
-    }    
+    }
+
+    public static void onStartupView() {
+        
+        System.out.println("FANCY BANNER\n"
+                + "Some description\n"
+                + "... With some more descriptive stuff.\n"
+                + "\n\n\n");
+        
+        displayMainMenu();
+        
+    }
 }
