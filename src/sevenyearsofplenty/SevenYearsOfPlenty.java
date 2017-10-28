@@ -5,9 +5,8 @@
  */
 package sevenyearsofplenty;
 
-import byui.cit260.sevenyearsofplenty.model.Crops;
 import byui.cit260.sevenyearsofplenty.model.Game;
-import byui.cit260.sevenyearsofplenty.view.StartMenuView;
+import byui.cit260.sevenyearsofplenty.view.CropsView;
 
 /**
  *
@@ -21,7 +20,7 @@ public class SevenYearsOfPlenty {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        StartMenuView.displayGameMenu();
+        CropsView.displayStartProgramView();
     }
     public static Game getGame() {
         return theGame;

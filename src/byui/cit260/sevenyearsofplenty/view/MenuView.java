@@ -5,22 +5,22 @@
  */
 package byui.cit260.sevenyearsofplenty.view;
 
-import byui.cit260.sevenyearsofplenty.control.GameControl;
-import byui.cit260.sevenyearsofplenty.model.Game;
 import java.util.Scanner;
-import sevenyearsofplenty.SevenYearsOfPlenty;
 
 /**
  *
  * @author ajlan
  */
-public class StartMenuView {
+public class MenuView {
     
-    private static final String MAIN_MENU = "GAME MENU\n"
-            + "1 - Start The Game\n"
-            + "2 - Quit";
+    private static final String MAIN_MENU = "\n\n\nMAIN MENU\n"
+            + "1 - View the map\n"
+            + "2 - View lists\n"
+            + "3 - Move to a new location\n"
+            + "4 - Manage crops\n"
+            + "5 - Quit\n\n\n";
     
-    private static final int MAX = 2;
+    private static final int MAX = 5;
     
     public static void displayGameMenu()
     {
@@ -55,23 +55,29 @@ public class StartMenuView {
     private static void doAction(int option) {
         
         switch(option) {
-            case 1: startGame();
+            case 1: quit();
             break;
             case 2: quit();
+            break;
+            case 3: quit();
+            break;
+            case 4: quit();
+            break;
+            case 5: quit();
             break;
         }
     }
     
-    private static void startGame() {
-        
-        Game theGame = SevenYearsOfPlenty.getGame();
-        GameControl.createCrops();
-        
-        System.out.println(theGame);
-    }
-    
     private static void quit() {
         
-        System.out.println("Thanks for playing ... goodbye.");
+    }
+    
+    public static void manageCropsView (){
+        // TODO: Current status of land
+        // TODO: Offer to buy land
+        // TODO: Offer to sell land
+        // TODO: How many bushels to set aside for food
+        // TODO: Decided how many acres of land to plant
+        // TODO: See the results for this year
     }
 }
