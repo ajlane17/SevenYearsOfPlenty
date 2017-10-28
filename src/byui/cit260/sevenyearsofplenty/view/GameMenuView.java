@@ -11,9 +11,9 @@ import java.util.Scanner;
  *
  * @author ajlan
  */
-public class MenuView {
+public class GameMenuView {
     
-    private static final String MAIN_MENU = "\n\n\nMAIN MENU\n"
+    private static final String GAME_MENU = "\n\n\nMAIN MENU\n"
             + "1 - View the map\n"
             + "2 - View lists\n"
             + "3 - Move to a new location\n"
@@ -27,7 +27,7 @@ public class MenuView {
        int option;
         do
         {
-            System.out.println(MAIN_MENU);
+            System.out.println(GAME_MENU);
             option = getMenuOption();
             doAction(option);
         }while(option != MAX);

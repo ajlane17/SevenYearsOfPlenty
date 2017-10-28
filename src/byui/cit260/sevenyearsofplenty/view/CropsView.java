@@ -45,7 +45,7 @@ public class CropsView {
     
      public static void displayNextView()
     {
-        MenuView.displayGameMenu(); 
+        GameMenuView.displayGameMenu(); 
 
         // control returns to this point when user exits main menu
         // goodbye message
