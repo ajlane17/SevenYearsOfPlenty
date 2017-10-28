@@ -13,12 +13,12 @@ import java.util.Scanner;
  */
 public class GameMenuView {
     
-    private static final String GAME_MENU = "\n\n\nMAIN MENU\n"
+    private static final String GAME_MENU = "\n\n\nGAME MENU\n"
             + "1 - View the map\n"
             + "2 - View lists\n"
             + "3 - Move to a new location\n"
             + "4 - Manage crops\n"
-            + "5 - Quit\n\n\n";
+            + "5 - Back to Main Menu\n\n\n";
     
     private static final int MAX = 5;
     
@@ -63,7 +63,7 @@ public class GameMenuView {
             break;
             case 4: manageCropsView();
             break;
-            case 5: quit();
+            case 5: MainMenuView.displayMainMenu();
             break;
         }
     }

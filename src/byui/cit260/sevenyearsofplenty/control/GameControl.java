@@ -40,8 +40,6 @@ public class GameControl {
     }
     
     public static void createPlayer(String playerName){
-        Player thePlayer = new Player();
-        thePlayer.setName(playerName);
-        SevenYearsOfPlenty.getGame().setPlayer(thePlayer);
+        SevenYearsOfPlenty.getPlayer().setName(playerName);
     }
 }

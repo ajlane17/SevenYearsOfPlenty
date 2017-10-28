@@ -5,7 +5,6 @@
  */
 package byui.cit260.sevenyearsofplenty.view;
 
-import static byui.cit260.sevenyearsofplenty.view.GameMenuView.manageCropsView;
 import java.util.Scanner;
 
 /**
@@ -14,24 +13,31 @@ import java.util.Scanner;
  */
 public class MainMenuView {
     
-    private static final String MAIN_MENU = "\n\n\nMAIN MENU\n"
-            + "1 - View the map\n"
-            + "2 - View lists\n"
-            + "3 - Move to a new location\n"
-            + "4 - Manage crops\n"
+        private static final String MAIN_MENU = "\n\n\nMAIN MENU\n"
+            + "1 - Start a new game\n"
+            + "2 - Load saved game\n"
+            + "3 - Help\n"
+            + "4 - Save game\n"
             + "5 - Quit\n\n\n";
     
     private static final int MAX = 5;
     
-    public static void displayGameMenu()
+    private static boolean display = true;
+    
+    public static void displayMainMenu()
     {
-       int option;
+        int option;
         do
         {
             System.out.println(MAIN_MENU);
             option = getMenuOption();
-            doAction(option);
-        }while(option != MAX);
+            if (option != MAX) {
+                doAction(option);
+            } else {
+                display = false;
+            }
+        }while(display);
+       
     }
     
     private static int getMenuOption()
@@ -56,21 +62,16 @@ public class MainMenuView {
     private static void doAction(int option) {
         
         switch(option) {
-            case 1: quit();
+            case 1: CropsView.displayStartProgramView();
             break;
-            case 2: quit();
+            case 2: 
             break;
-            case 3: quit();
+            case 3: HelpMenuView.displayMainMenu();
             break;
-            case 4: manageCropsView();
+            case 4: 
             break;
-            case 5: quit();
+            case 5: MainMenuView.displayMainMenu();
             break;
         }
-    }
-    
-    private static void quit() {
-        
-    }
-    
+    }    
 }
