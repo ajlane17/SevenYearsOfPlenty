@@ -60,7 +60,7 @@ public class HelpMenuView {
         switch(option) {
             case 1: 
             break;
-            case 2: 
+            case 2: helpJoseph();
             break;
             case 3: 
             break;
@@ -71,6 +71,10 @@ public class HelpMenuView {
             case 6: MainMenuView.displayMainMenu();
             break;
         }
-    }    
+    }
+
+    public static void helpJoseph() {
+        System.out.println("Joseph help goes here");
+    }
     
 }
