@@ -24,7 +24,6 @@ public class CropsView {
     
     // Get references to the Game object and the Crops object
     private static Game theGame = SevenYearsOfPlenty.getGame();
-    private static Crops theCrop = theGame.getCrops();
 
     // The startProgramView method
     // Purpose: Start the game
@@ -71,14 +70,19 @@ public class CropsView {
         return playerName;
     }
     
+    public static void displayCurrentStatus () {
+        // TODO: Prettify the output
+        System.out.println(theGame.getCrops());
+    }
+    
     public static void buyLandView()
     {
          int toBuy = 0;
          int price = CropsControl.calcLandCost();
          System.out.format("Land is selling for %d bushels per acre.%n",price);
 
-         int wheat = theCrop.getWheatInStore(); 
-         int population = theCrop.getPopulation();
+         int wheat = theGame.getCrops().getWheatInStore(); 
+         int population = theGame.getCrops().getPopulation();
         do
         {
            System.out.print("\nHow many acres of land do you wish to buy? ");      
@@ -94,7 +98,8 @@ public class CropsView {
                   System.out.println("You do not have enough wheat to buy this much land.");
              }
         } while(toBuy < 0 || toBuy * price > wheat);
-        CropsControl.buyLand(price, toBuy, theCrop);
+        CropsControl.buyLand(price, toBuy, theGame.getCrops());
+        displayCurrentStatus();
     }
 
 }

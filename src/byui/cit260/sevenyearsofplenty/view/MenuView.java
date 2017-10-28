@@ -61,7 +61,7 @@ public class MenuView {
             break;
             case 3: quit();
             break;
-            case 4: quit();
+            case 4: manageCropsView();
             break;
             case 5: quit();
             break;
@@ -72,9 +72,9 @@ public class MenuView {
         
     }
     
-    public static void manageCropsView (){
-        // TODO: Current status of land
-        // TODO: Offer to buy land
+    public static void manageCropsView () {
+        CropsView.displayCurrentStatus();
+        CropsView.buyLandView();
         // TODO: Offer to sell land
         // TODO: How many bushels to set aside for food
         // TODO: Decided how many acres of land to plant
