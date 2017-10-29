@@ -5,6 +5,7 @@
  */
 package sevenyearsofplenty;
 
+import byui.cit260.sevenyearsofplenty.model.Crops;
 import byui.cit260.sevenyearsofplenty.model.Game;
 import byui.cit260.sevenyearsofplenty.model.Player;
 import byui.cit260.sevenyearsofplenty.view.MainMenuView;
@@ -24,12 +25,21 @@ public class SevenYearsOfPlenty {
     public static void main(String[] args) {
         MainMenuView.onStartupView();
     }
+
     public static Game getGame() {
         return theGame;
     }
-    
+
+    public static void setGame(Game _theGame) {
+        theGame = _theGame;
+    }
+
     public static Player getPlayer() {
         return thePlayer;
     }
-        
+
+    public static void setPlayer(Player _thePlayer) {
+        thePlayer = _thePlayer;
+    }
+    
 }
