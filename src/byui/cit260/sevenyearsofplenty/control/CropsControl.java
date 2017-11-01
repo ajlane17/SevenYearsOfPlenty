@@ -52,14 +52,15 @@ public class CropsControl {
         }
     }
     
-    public static void plantCrops(int cropsToPlant, Crops theCropsObj) {
+    public static void plantCrops(int bushelsToSpend, Crops theCropsObj) {
         
         int wheatInStore = theCropsObj.getWheatInStore();
         int acres = theCropsObj.getAcres();
-        if (cropsToPlant > wheatInStore || cropsToPlant > acres) {
+        if (bushelsToSpend > wheatInStore || bushelsToSpend * 2 > acres) {
             throw new IllegalArgumentException("Can't do that");
         } else {
-            theCropsObj.setPlanted(cropsToPlant);
+            theCropsObj.setPlanted(bushelsToSpend);
+            theCropsObj.setWheatInStore(wheatInStore - bushelsToSpend);
         }
     }
     

@@ -70,11 +70,6 @@ public class CropsView {
         return playerName;
     }
     
-    public static void displayCurrentStatus () {
-        // TODO: Prettify the output
-        System.out.println(theGame.getCrops());
-    }
-    
     public static void buyLandView()
     {
          int toBuy = 0;
@@ -99,7 +94,78 @@ public class CropsView {
              }
         } while(toBuy < 0 || toBuy * price > wheat);
         CropsControl.buyLand(price, toBuy, theGame.getCrops());
-        displayCurrentStatus();
+    }
+    
+    public static void sellLandView() {
+        
+    }
+    
+    public static void feedPeopleView() {
+        
+    }
+    
+    public static void plantCropsView() {
+        int bushelsToSpend = 0;
+        int wheat = theGame.getCrops().getWheatInStore();
+        int acres = theGame.getCrops().getAcres();
+        
+        System.out.println("REMINDER: Two acres can be planted per bushel.");
+        
+        do
+        {
+           System.out.print("\nHow many bushels would you like to use to plant? ");      
+           bushelsToSpend = keyboard.nextInt();
+           if(bushelsToSpend < 0)
+           {
+                System.out.println("I am sorry master, I cannot do this.");
+                System.out.println("You cannot buy a negative amount of acres.");
+            }
+            else if (bushelsToSpend > wheat)
+            {
+                System.out.println("I am sorry master, I cannot do this.");
+                System.out.println("You do not have enough wheat to buy this much land.");
+            }
+            else if (bushelsToSpend * 2 > acres)
+            {
+                System.out.println("I am sorry master, I cannot do this.");
+                System.out.println("You cannot plant more acres than you have.");
+            }
+        } while(bushelsToSpend < 0 || bushelsToSpend > wheat || bushelsToSpend * 2 > acres);
+        CropsControl.plantCrops(bushelsToSpend, theGame.getCrops());
+        
+    }
+    
+    public static void harvestWheatView() {
+        
+    }
+    
+    public static void showStarvedView() {
+        
+    }
+    
+    public static void growPopulationView() {
+        
+    }
+    
+    public static void displayCropsReportView() {
+        
+        Crops theCrops = theGame.getCrops();
+        
+        System.out.println("###########################\n"
+                         + "#       CROP REPORT       #\n"
+                         + "###########################\n");
+        System.out.format("YEAR: %2d\n", theCrops.getYear());
+        System.out.format("POPULATION: %2d\n", theCrops.getPopulation());
+        System.out.format("ACRES: %2d\n", theCrops.getAcres());
+        System.out.format("CROP YIELD: %2d\n", theCrops.getCropYield());
+        System.out.format("WHEAT IN STORE: %2d\n", theCrops.getWheatInStore());
+        System.out.format("NUMBER WHO DIED: %2d\n", theCrops.getNumberWhoDied());
+        System.out.format("NEW PEOPLE: %2d\n", theCrops.getNewPeople());
+        System.out.format("HARVEST: %2d\n", theCrops.getHarvest());
+        System.out.format("PHAROAH'S SHARE: %2d\n", theCrops.getPharoahsShare());
+        System.out.format("FED: %2d\n", theCrops.getFed());
+        System.out.format("PLANTED: %2d\n", theCrops.getPlanted());
+        System.out.format("STARVED PEOPLE: %2d\n", theCrops.getStarvedPeople());
     }
 
 }

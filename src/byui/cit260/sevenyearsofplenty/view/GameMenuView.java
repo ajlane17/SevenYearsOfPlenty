@@ -73,11 +73,14 @@ public class GameMenuView {
     }
     
     public static void manageCropsView () {
-        CropsView.displayCurrentStatus();
+        CropsView.displayCropsReportView();
         CropsView.buyLandView();
-        // TODO: Offer to sell land
-        // TODO: How many bushels to set aside for food
-        // TODO: Decided how many acres of land to plant
-        // TODO: See the results for this year
+        CropsView.sellLandView();
+        CropsView.feedPeopleView();
+        CropsView.plantCropsView();
+        CropsView.harvestWheatView();
+        CropsView.showStarvedView();
+        CropsView.growPopulationView();
+        CropsView.displayCropsReportView();
     }
 }
