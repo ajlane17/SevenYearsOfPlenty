@@ -11,48 +11,18 @@ import java.util.Scanner;
  *
  * @author ajlan
  */
-public class GameMenuView {
+public class GameMenuView extends MenuView {
     
-    private static final String GAME_MENU = "\n\n\nGAME MENU\n"
+    public GameMenuView() {
+        super("\n\n\nGAME MENU\n"
             + "1 - View the map\n"
             + "2 - View lists\n"
             + "3 - Move to a new location\n"
             + "4 - Manage crops\n"
-            + "5 - Back to Main Menu\n\n\n";
-    
-    private static final int MAX = 5;
-    
-    public static void displayGameMenu()
-    {
-       int option;
-        do
-        {
-            System.out.println(GAME_MENU);
-            option = getMenuOption();
-            doAction(option);
-        }while(option != MAX);
+            + "5 - Back to Main Menu\n\n\n", 5);
     }
-    
-    private static int getMenuOption()
-    {
-        Scanner keyboard = new Scanner(System.in);
         
-        int inputValue = 0;
-        
-        do
-        {
-          System.out.print("Please enter an option:");
-          inputValue = keyboard.nextInt();
-          if(inputValue < 1 || inputValue > MAX)
-          {
-              System.out.println("Error: invalid option.");
-          }
-        } while(inputValue < 1 || inputValue > MAX);
-        
-        return inputValue;
-    }
-    
-    private static void doAction(int option) {
+    public void doAction(int option) {
         
         switch(option) {
             case 1: quit();
@@ -63,7 +33,9 @@ public class GameMenuView {
             break;
             case 4: manageCropsView();
             break;
-            case 5: MainMenuView.displayMainMenu();
+            case 5:
+                MainMenuView mainMenuView = new MainMenuView();
+                mainMenuView.display();
             break;
         }
     }

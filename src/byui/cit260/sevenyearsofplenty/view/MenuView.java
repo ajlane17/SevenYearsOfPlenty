@@ -11,17 +11,18 @@ import java.util.Scanner;
  *
  * @author ajlane
  */
-public abstract class View implements ViewInterface {
+public abstract class MenuView implements MenuViewInterface {
     
     protected String displayMessage;
     protected int max;
     
-    public View() {
+    public MenuView() {
         
     }
     
-    public View(String message) {
+    public MenuView(String message, int max) {
         this.displayMessage = message;
+        this.max = max;
     }
     
     @Override
@@ -50,11 +51,11 @@ public abstract class View implements ViewInterface {
         {
           System.out.print("Please enter an option:");
           inputValue = keyboard.nextInt();
-          if(inputValue < 1 || inputValue > MAX)
+          if(inputValue < 1 || inputValue > max)
           {
               System.out.println("Error: invalid option.");
           }
-        } while(inputValue < 1 || inputValue > MAX);
+        } while(inputValue < 1 || inputValue > max);
         
         return inputValue;
     }

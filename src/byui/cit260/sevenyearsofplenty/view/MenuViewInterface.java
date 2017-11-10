@@ -9,10 +9,10 @@ package byui.cit260.sevenyearsofplenty.view;
  *
  * @author ajlane
  */
-public interface ViewInterface {
+public interface MenuViewInterface {
     
     public void display();
     public int getMenuOption();
-    public boolean doAction(String value);
+    public void doAction(int value);
     
 }

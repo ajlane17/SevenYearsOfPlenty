@@ -5,71 +5,37 @@
  */
 package byui.cit260.sevenyearsofplenty.view;
 
-import java.util.Scanner;
-
 /**
  *
- * @author ajlan
+ * @author ajlans
  */
-public class MainMenuView {
+public class MainMenuView extends MenuView {
     
-        private static final String MAIN_MENU = "\n\n\nMAIN MENU\n"
+    public MainMenuView() {        
+        super("\n\n\nMAIN MENU\n"
             + "1 - Start a new game\n"
             + "2 - Load saved game\n"
             + "3 - Help\n"
             + "4 - Save game\n"
-            + "5 - Quit\n\n\n";
-    
-    private static final int MAX = 5;
-    
-    public static void displayMainMenu()
-    {
-        boolean display = true;
-        int option;
-        do
-        {
-            System.out.println(MAIN_MENU);
-            option = getMenuOption();
-            if (option != MAX) {
-                doAction(option);
-            } else {
-                display = false;
-            }
-        }while(display);
-       
+            + "5 - Quit\n\n\n", 5);
     }
-    
-    private static int getMenuOption()
-    {
-        Scanner keyboard = new Scanner(System.in);
-        
-        int inputValue = 0;
-        
-        do
-        {
-          System.out.print("Please enter an option:");
-          inputValue = keyboard.nextInt();
-          if(inputValue < 1 || inputValue > MAX)
-          {
-              System.out.println("Error: invalid option.");
-          }
-        } while(inputValue < 1 || inputValue > MAX);
-        
-        return inputValue;
-    }
-    
-    private static void doAction(int option) {
+           
+    public void doAction(int option) {
         
         switch(option) {
             case 1: CropsView.displayStartProgramView();
             break;
             case 2: 
             break;
-            case 3: HelpMenuView.displayMainMenu();
+            case 3:
+                HelpMenuView helpMenuView = new HelpMenuView();
+                helpMenuView.display();
             break;
             case 4: 
             break;
-            case 5: MainMenuView.displayMainMenu();
+            case 5: 
+                MainMenuView mainMenuView = new MainMenuView();
+                mainMenuView.display();
             break;
         }
     }
@@ -92,7 +58,8 @@ public class MainMenuView {
                 + "Oh, you can't because he's not around anymore. RIP.\n"
                 + "\n");
         
-        displayMainMenu();
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.display();
         
     }
 }
