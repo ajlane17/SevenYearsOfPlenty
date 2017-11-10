@@ -22,10 +22,9 @@ public class MainMenuView {
     
     private static final int MAX = 5;
     
-    private static boolean display = true;
-    
     public static void displayMainMenu()
     {
+        boolean display = true;
         int option;
         do
         {
