@@ -160,9 +160,24 @@ public class CropsView {
     }
     
     public static void harvestWheatView() {
+        int planted = theGame.getCrops().getPlanted();
+        int wheat = theGame.getCrops().getWheatInStore();
+        int harvest = theGame.getCrops().getHarvest();
+        int rats = 0;
+        System.out.println( "\n# THIS IS A REPORT OF THE HARVEST #");
         
+        do{
+            if(rats > 0){
+                System.out.println("I am sorry master, the rats are eaten portion of the bushels.");
+            }
+            else{
+                System.out.println("You don't have problems with rats. Your harvest is complete\n");
+        }
+        }while(rats > 0);
+        CropsControl.harvestCrops(theGame.getCrops());
     }
-    
+
+
     public static void showStarvedView() {
         
     }
