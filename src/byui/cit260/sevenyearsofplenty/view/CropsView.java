@@ -98,30 +98,7 @@ public class CropsView {
     }
     
     public static void sellLandView() {
-         int toSell = 0;
-         int price = CropsControl.calcLandCost();
-                  
-         int wheat = theGame.getCrops().getWheatInStore(); 
-         int population = theGame.getCrops().getPopulation();
-         int owned = theGame.getCrops().getAcres();
-        do
-        {
-            System.out.print("\nHow many acres of land do you wish to sell? ");      
-            toSell = keyboard.nextInt();
-            
-            if(toSell < 0)
-            {
-                System.out.println("I am sorry master, I cannot do this.");
-                System.out.println("You cannot sell a negative amount of land.");
-            }
-            else if(toSell > owned)
-            {
-                System.out.println("I am sorry master, I cannot do this.");
-                System.out.println("You don't have enough acres to sell.");
-            }
-            
-        } while(toSell < 0 || toSell > owned) ;
-        CropsControl.sellLand(price, toSell, theGame.getCrops());        
+        
     }
     
     public static void feedPeopleView() {
