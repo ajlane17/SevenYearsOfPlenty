@@ -51,6 +51,7 @@ public class GameMenuView extends MenuView {
         CropsView.feedPeopleView();
         CropsView.plantCropsView();
         CropsView.harvestWheatView();
+        CropsView.payPharoahView();
         CropsView.showStarvedView();
         CropsView.growPopulationView();
         CropsView.displayCropsReportView();

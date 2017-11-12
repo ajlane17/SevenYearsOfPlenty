@@ -160,21 +160,30 @@ public class CropsView {
     }
     
     public static void harvestWheatView() {
-        int planted = theGame.getCrops().getPlanted();
-        int wheat = theGame.getCrops().getWheatInStore();
-        int harvest = theGame.getCrops().getHarvest();
-        int rats = 0;
+        
         System.out.println( "\n# THIS IS A REPORT OF THE HARVEST #");
         
-        do{
-            if(rats > 0){
-                System.out.println("I am sorry master, the rats are eaten portion of the bushels.");
-            }
-            else{
-                System.out.println("You don't have problems with rats. Your harvest is complete\n");
-        }
-        }while(rats > 0);
-        CropsControl.harvestCrops(theGame.getCrops());
+        int rats = CropsControl.harvestCrops(theGame.getCrops());
+        Crops theCropsObj = theGame.getCrops();
+        int planted = theCropsObj.getPlanted();
+        int cropYield = theCropsObj.getCropYield();
+        int harvest = theCropsObj.getHarvest();
+        
+        
+        System.out.format("You planted %2d acres and yielded %2d crops per acre.\n",
+                planted, cropYield);
+        System.out.format("Rates ate: %2d\n", rats);
+        System.out.format("The harvest was: %2d\n\n", harvest);
+    }
+    
+    public static void payPharoahView() {
+        
+        int pharoahsCut = CropsControl.payPharoah(theGame.getCrops());
+        
+        System.out.println("\n# PAYING PHAROAH #");
+        System.out.println("The Pharoah is paid before the people are fed.");
+        System.out.format("Pharoah took %2d bushels in taxes.\n\n", pharoahsCut);
+        
     }
 
 

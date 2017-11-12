@@ -14,23 +14,26 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class CropsControl {
     
-    public static void payPharoah (Crops theCropsObj) {
+    public static int payPharoah (Crops theCropsObj) {
         int taxLow = 8;
         int taxHigh = 10;
         float taxRate;
-        int pharoahsShare;
+        int pharoahsShare = theCropsObj.getPharoahsShare();
+        int pharoahsCut;
         int wheatInStore = theCropsObj.getWheatInStore();
         if (wheatInStore >= 0) {
             // generate tax rate
             taxRate = ThreadLocalRandom.current().nextInt(taxLow, taxHigh + 1);
             taxRate = taxRate/100;
             // calculate Pharoah’s share
-            pharoahsShare = (int)(wheatInStore * taxRate);
+            pharoahsCut = (int)(wheatInStore * taxRate);
             // Update Crops object
-            theCropsObj.setPharoahsShare(pharoahsShare);
+            theCropsObj.setPharoahsShare(pharoahsShare + pharoahsCut);
             theCropsObj.setWheatInStore(wheatInStore - pharoahsShare);
+            return pharoahsCut;
         } else {
-            throw new IllegalArgumentException("Can't do that");
+            // throw new IllegalArgumentException("Can't do that");
+            return -1; 
         }
     }
 
@@ -59,7 +62,7 @@ public class CropsControl {
         if (bushelsToSpend > wheatInStore || bushelsToSpend * 2 > acres) {
             throw new IllegalArgumentException("Can't do that");
         } else {
-            theCropsObj.setPlanted(bushelsToSpend);
+            theCropsObj.setPlanted(bushelsToSpend * 2);
             theCropsObj.setWheatInStore(wheatInStore - bushelsToSpend);
         }
     }
@@ -95,10 +98,10 @@ public class CropsControl {
         float ratTax; 
          
         //Getting crop yield 
-        yield = ThreadLocalRandom.current().nextInt(yieldLow, yieldHigh +1); 
+        cropYield = ThreadLocalRandom.current().nextInt(yieldLow, yieldHigh +1); 
          
         //Calculate total cropYield 
-        cropYield = planted * (int)yield; 
+        harvest = planted * (int)cropYield; 
          
         //Rats eat 
         rats = Math.random() < 0.5; 
@@ -107,16 +110,16 @@ public class CropsControl {
         if (rats){ 
             ratTax = ThreadLocalRandom.current() .nextInt(ratTaxLow, ratTaxHigh +1); 
             ratTax = ratTax/100; 
-            harvest = cropYield - (int)ratTax; 
+            ratTax = ratTax * harvest;
+            harvest = harvest - (int)ratTax; 
         }else{ 
-            harvest = cropYield; 
             ratTax = 0; 
         } 
          
         //Update the crops object 
         theCropsObj.setCropYield(cropYield); 
         theCropsObj.setHarvest(harvest); 
-        theCropsObj.setWheatInStore(harvest); 
+        theCropsObj.setWheatInStore(wheatInStore + harvest); 
          
         return (int)ratTax; 
     } 
