@@ -6,6 +6,7 @@
 package byui.cit260.sevenyearsofplenty.control;
 
 import byui.cit260.sevenyearsofplenty.model.Crops;
+import static java.lang.Math.round;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -17,7 +18,7 @@ public class CropsControl {
     public static int payPharoah (Crops theCropsObj) {
         int taxLow = 8;
         int taxHigh = 10;
-        float taxRate;
+        double taxRate;
         int pharoahsShare = theCropsObj.getPharoahsShare();
         int pharoahsCut;
         int wheatInStore = theCropsObj.getWheatInStore();
@@ -92,10 +93,10 @@ public class CropsControl {
         int yieldLow = 1; 
         int yieldHigh = 5; 
         int harvest; 
-        float yield; 
+        double yield; 
         int cropYield; 
         boolean rats; 
-        float ratTax; 
+        double ratTax; 
          
         //Getting crop yield 
         cropYield = ThreadLocalRandom.current().nextInt(yieldLow, yieldHigh +1); 
@@ -131,7 +132,7 @@ public class CropsControl {
     public static int feedPeople(int reqNutrition, int feedAmount, Crops theCropsObj) {
         int wheatInStore = theCropsObj.getWheatInStore();
         int currPopulation = theCropsObj.getPopulation();
-        float productivity;
+        double productivity;
 
         if (feedAmount <= 0 || wheatInStore <= 0 || currPopulation <= 0
                 || reqNutrition <= 0 || reqNutrition > feedAmount || feedAmount > wheatInStore) {
@@ -142,6 +143,7 @@ public class CropsControl {
 
             if (fedPopulation > currPopulation) {
                 productivity = fedPopulation / currPopulation;
+                theCropsObj.setProductivity(productivity);
             } else {
                 theCropsObj.setStarvedPeople(currPopulation - fedPopulation);
                 currPopulation = fedPopulation;
@@ -150,8 +152,24 @@ public class CropsControl {
 
             return currPopulation;
         }
-
     }
+
+    public static int growPopulation(Crops theCropsObj){
+                double rate = theCropsObj.getGrowthRate();
+                double productivity = theCropsObj.getProductivity();
+                int yield = theCropsObj.getCropYield();
+                int Population = theCropsObj.getPopulation();
+                
+                if (productivity > 1) {
+                   double formula = (rate * yield) + productivity;
+                   Population = (int) round(Population * formula);
+                }
+                else {
+                    
+                }
+                return Population;
+    }   
+    
     public static int calcLandCost() {
         return 10;
     }

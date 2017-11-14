@@ -84,7 +84,7 @@ public class CropsControlTest {
         assertTrue("Error, result is too high", pharoahsShareResult <= pharoahsShareHigh);
         assertTrue("Error, result is too low", wheatInStoreResult >= wheatInStoreLow);
         assertTrue("Error, result is too high", wheatInStoreResult <= wheatInStoreHigh);
-        
+    
         // Test Case #4
         System.out.println("payPharoah #4");
         payPharoahCropsObj.setWheatInStore(-100);
@@ -93,7 +93,7 @@ public class CropsControlTest {
         } catch (Exception e) {
             assertThat(e.getMessage(), is("Can't do that"));
         }
-        
+      
         // Test Case #5
         System.out.println("payPharoah #5");
         payPharoahCropsObj.setWheatInStore(0);
@@ -349,7 +349,7 @@ public class CropsControlTest {
         assertEquals(expResult, result); 
     }
 
-    @Test
+     @Test
     public void feedPeople() {
 
         Crops theCropsObj = new Crops();
@@ -375,7 +375,48 @@ public class CropsControlTest {
         System.out.println("              fedPeople: " + result);
         System.out.println("          starvedPeople: " + theCropsObj.getStarvedPeople());
         System.out.println("         new Population: " + newPopulation);
-
-     
     }
+//------------------------------------------------------------------------------    
+//------------------------------------------------------------------------------    
+    //growPopulation takes theCrops object and incorperates calulations on 
+    //the growthRate(a percentage between 1 and 5 percent)
+    //the cropYield (an integer between 1 and 5)
+    //the productivity (a double based on over-supply of rations) and,
+    //the current Population
+    // this generates a 1.## percentage that is multiplied by the current 
+    //Population to generate a new overall Population based on those factors.
+    @Test
+    public void growPopulation(){
+        Crops theCropsObj = new Crops();
+        
+        theCropsObj.setGrowthRate(.03);
+        theCropsObj.setCropYield(4);
+        theCropsObj.setProductivity(1.11);
+        theCropsObj.setPopulation(25000);
+       
+  // Population = (int) round((rate*yield) + productivity) * Population;
+        
+        System.out.println("#1 growPopulation");
+        int result = CropsControl.growPopulation(theCropsObj);
+        System.out.println("growPopulation results are :" + result);
+        System.out.println("the expected results are: 30750");
+        
+//------------------------------------------------------------------------------        
+        theCropsObj.setGrowthRate(.05);
+        theCropsObj.setCropYield(5);
+        theCropsObj.setProductivity(1.11);
+        theCropsObj.setPopulation(25000);
+   
+        System.out.println(theCropsObj.getGrowthRate());
+        System.out.println(theCropsObj.getCropYield());       
+        System.out.println(theCropsObj.getProductivity());        
+        System.out.println(theCropsObj.getPopulation());        
+        
+        System.out.println("#2 growPopulation");
+        int thisResult = CropsControl.growPopulation(theCropsObj);
+        System.out.println("growPopulation results are :" + thisResult);
+        System.out.println("the expected results are: 34000");
+        
+    }
+    
 }

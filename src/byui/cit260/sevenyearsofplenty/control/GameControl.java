@@ -30,15 +30,14 @@ public class GameControl {
         // initialize the data in the crops object     
         theCrops.setYear(0);
         theCrops.setPopulation(95);
-        theCrops.setNewPeople(5);
         theCrops.setCropYield(3);
-        theCrops.setNumberWhoDied(0);
         theCrops.setPharoahsShare(200);
         theCrops.setWheatInStore(2800);
         theCrops.setAcres(1000);
         theCrops.setHarvest(0);
         theCrops.setPlanted(1000);
         theCrops.setFed(0);
+        theCrops.setStarvedPeople(0);
 
         theGame.setCrops(theCrops);
     }
