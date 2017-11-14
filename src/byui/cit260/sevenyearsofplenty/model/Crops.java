@@ -17,16 +17,16 @@ public class Crops implements Serializable {
     // Class instance variables
     private int year;
     private int Population;
+    private double growthRate;
     private int acres;
     private int cropYield;
     private int wheatInStore;
-    private int numberWhoDied;
-    private int newPeople;
     private int harvest;
     private int pharoahsShare;
     private int fed;
     private int planted;
     private int starvedPeople;
+    private double productivity;
     private ArrayList<Game> games = new ArrayList<>();
 
     public Crops() {
@@ -82,21 +82,22 @@ public class Crops implements Serializable {
         this.wheatInStore = wheatInStore;
     }
 
-    public int getNumberWhoDied() {
-        return numberWhoDied;
+    public double getProductivity() {
+        return productivity;
     }
 
-    public void setNumberWhoDied(int numberWhoDied) {
-        this.numberWhoDied = numberWhoDied;
+    public void setProductivity(double productivity) {
+        this.productivity = productivity;
+    }
+    
+       public double getGrowthRate() {
+        return growthRate;
     }
 
-    public int getNewPeople() {
-        return newPeople;
+    public void setGrowthRate(double growthRate) {
+        this.growthRate = growthRate;
     }
 
-    public void setNewPeople(int newPeople) {
-        this.newPeople = newPeople;
-    }
 
     public int getHarvest() {
         return harvest;
@@ -146,8 +147,6 @@ public class Crops implements Serializable {
         hash = 61 * hash + this.acres;
         hash = 61 * hash + this.cropYield;
         hash = 61 * hash + this.wheatInStore;
-        hash = 61 * hash + this.numberWhoDied;
-        hash = 61 * hash + this.newPeople;
         hash = 61 * hash + this.harvest;
         hash = 61 * hash + this.pharoahsShare;
         hash = 61 * hash + this.fed;
@@ -155,6 +154,8 @@ public class Crops implements Serializable {
         return hash;
     }
 
+
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -182,12 +183,7 @@ public class Crops implements Serializable {
         if (this.wheatInStore != other.wheatInStore) {
             return false;
         }
-        if (this.numberWhoDied != other.numberWhoDied) {
-            return false;
-        }
-        if (this.newPeople != other.newPeople) {
-            return false;
-        }
+
         if (this.harvest != other.harvest) {
             return false;
         }
@@ -207,8 +203,7 @@ public class Crops implements Serializable {
     public String toString() {
         return "Crops{" + "year=" + year + ", population=" + Population
                 + ", acres=" + acres + ", cropYield=" + cropYield 
-                + ", wheatInStore=" + wheatInStore + ", numberWhoDied=" 
-                + numberWhoDied + ", newPeople=" + newPeople + ", harvest=" 
+                + ", wheatInStore=" + wheatInStore + ", harvest=" 
                 + harvest + ", pharoahsShare=" + pharoahsShare + ", fed=" 
                 + fed + ", planted=" + planted + '}';
     }
