@@ -207,6 +207,8 @@ public class CropsView {
         System.out.format("ACRES: %2d\n", theCrops.getAcres());
         System.out.format("CROP YIELD: %2d\n", theCrops.getCropYield());
         System.out.format("WHEAT IN STORE: %2d\n", theCrops.getWheatInStore());
+        System.out.format("NUMBER WHO DIED: %2d\n", theCrops.getNumberWhoDied());
+        System.out.format("NEW PEOPLE: %2d\n", theCrops.getNewPeople());
         System.out.format("HARVEST: %2d\n", theCrops.getHarvest());
         System.out.format("PHAROAH'S SHARE: %2d\n", theCrops.getPharoahsShare());
         System.out.format("FED: %2d\n", theCrops.getFed());
