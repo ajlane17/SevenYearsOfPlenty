@@ -5,7 +5,8 @@
  */
 package byui.cit260.sevenyearsofplenty.view;
 
-import java.util.Scanner;
+import byui.cit260.sevenyearsofplenty.model.Game;
+import sevenyearsofplenty.SevenYearsOfPlenty;
 
 /**
  *
@@ -25,7 +26,7 @@ public class GameMenuView extends MenuView {
     public void doAction(int option) {
         
         switch(option) {
-            case 1: quit();
+            case 1: mapView();
             break;
             case 2: quit();
             break;
@@ -55,5 +56,12 @@ public class GameMenuView extends MenuView {
         CropsView.showStarvedView();
         CropsView.growPopulationView();
         CropsView.displayCropsReportView();
+    }
+    
+    public static void mapView() {
+        Game theGame = SevenYearsOfPlenty.getGame();
+        
+        MapView.displayMap(theGame.getPlayerMap());
+        
     }
 }

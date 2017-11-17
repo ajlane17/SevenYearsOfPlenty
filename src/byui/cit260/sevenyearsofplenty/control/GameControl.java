@@ -8,6 +8,8 @@ package byui.cit260.sevenyearsofplenty.control;
 import byui.cit260.sevenyearsofplenty.model.Crops;
 import byui.cit260.sevenyearsofplenty.model.Game;
 import byui.cit260.sevenyearsofplenty.model.Player;
+import byui.cit260.sevenyearsofplenty.model.PlayerMap;
+import byui.cit260.sevenyearsofplenty.control.MapControl;
 import sevenyearsofplenty.SevenYearsOfPlenty;
 
 /**
@@ -45,4 +47,14 @@ public class GameControl {
     public static void createPlayer(String playerName){
         thePlayer.setName(playerName);
     }
+    
+    public static void createPlayerMap(int rows, int columns) {
+        
+        PlayerMap thePlayerMap = new PlayerMap();
+        thePlayerMap.setRowCount(rows);
+        thePlayerMap.setColCount(columns);
+        MapControl.createLocations(thePlayerMap, rows, columns);
+        theGame.setPlayerMap(thePlayerMap);
+    }
+    
 }
