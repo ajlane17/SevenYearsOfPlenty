@@ -5,8 +5,9 @@
  */
 package byui.cit260.sevenyearsofplenty.view;
 
+import byui.cit260.sevenyearsofplenty.model.Game;
 import byui.cit260.sevenyearsofplenty.model.Location;
-import byui.cit260.sevenyearsofplenty.model.PlayerMap;
+import sevenyearsofplenty.SevenYearsOfPlenty;
 
 /**
  *
@@ -14,9 +15,11 @@ import byui.cit260.sevenyearsofplenty.model.PlayerMap;
  */
 public class MapView {
     
-    public static void displayMap (PlayerMap map) {
+    public static void displayMap () {
         
-        Location[][] locations = map.getLocation();
+        Game theGame = SevenYearsOfPlenty.getGame();
+        
+        Location[][] locations = theGame.getPlayerMap().getLocation();
         
         for(Location[] arr2: locations) {
             for(Location val: arr2)

@@ -15,7 +15,7 @@ import byui.cit260.sevenyearsofplenty.model.PlayerMap;
 public class MapControl {
     
     public static void createLocations(PlayerMap map, int rows, int columns) {
-        Location[][] locations = new Location[5][5];
+        Location[][] locations = new Location[rows][columns];
         
         for (int i = 0; i < locations.length; i++) {
             for (int j = 0; j < locations[i].length; j++) {

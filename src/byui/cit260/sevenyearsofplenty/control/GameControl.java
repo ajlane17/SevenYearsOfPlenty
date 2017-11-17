@@ -9,7 +9,6 @@ import byui.cit260.sevenyearsofplenty.model.Crops;
 import byui.cit260.sevenyearsofplenty.model.Game;
 import byui.cit260.sevenyearsofplenty.model.Player;
 import byui.cit260.sevenyearsofplenty.model.PlayerMap;
-import byui.cit260.sevenyearsofplenty.control.MapControl;
 import sevenyearsofplenty.SevenYearsOfPlenty;
 
 /**

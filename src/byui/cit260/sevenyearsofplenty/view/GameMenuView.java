@@ -59,9 +59,8 @@ public class GameMenuView extends MenuView {
     }
     
     public static void mapView() {
-        Game theGame = SevenYearsOfPlenty.getGame();
         
-        MapView.displayMap(theGame.getPlayerMap());
+        MapView.displayMap();
         
     }
 }
