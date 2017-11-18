@@ -5,9 +5,6 @@
  */
 package byui.cit260.sevenyearsofplenty.view;
 
-import byui.cit260.sevenyearsofplenty.model.Game;
-import sevenyearsofplenty.SevenYearsOfPlenty;
-
 /**
  *
  * @author ajlan
@@ -28,7 +25,9 @@ public class GameMenuView extends MenuView {
         switch(option) {
             case 1: mapView();
             break;
-            case 2: toolsView();
+            case 2: 
+                toolsView();
+                livestockView();
             break;
             case 3: quit();
             break;
@@ -60,6 +59,10 @@ public class GameMenuView extends MenuView {
     
     public static void toolsView(){
         ToolsView.displayTools();
+    }
+    
+    public static void livestockView() {
+        LivestockView.showLivestockInventory();
     }
     
     
