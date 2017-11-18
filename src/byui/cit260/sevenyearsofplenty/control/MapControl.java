@@ -16,13 +16,15 @@ public class MapControl {
     
     public static void createLocations(PlayerMap map, int rows, int columns) {
         Location[][] locations = new Location[rows][columns];
+        int symbol = 1;
         
         for (int i = 0; i < locations.length; i++) {
             for (int j = 0; j < locations[i].length; j++) {
                 locations[i][j] = new Location();
                 locations[i][j].setRow(i);
                 locations[i][j].setColumn(j);
-                
+                locations[i][j].setSymbol(Integer.toString(symbol));
+                symbol++;
             }
         }
         

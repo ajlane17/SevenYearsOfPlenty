@@ -34,7 +34,7 @@ public class CropsView {
         String playerName = getPlayersName();
         GameControl.createPlayer(playerName);
         GameControl.createCrops();
-        GameControl.createPlayerMap(3, 5);
+        GameControl.createPlayerMap(5, 5);
 
         System.out.println("\n\n\n\n");
         System.out.println(playerName + ", you have been appointed overseer for your");
