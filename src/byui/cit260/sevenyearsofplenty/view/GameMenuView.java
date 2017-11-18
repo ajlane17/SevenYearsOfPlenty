@@ -28,7 +28,7 @@ public class GameMenuView extends MenuView {
         switch(option) {
             case 1: mapView();
             break;
-            case 2: quit();
+            case 2: toolsView();
             break;
             case 3: quit();
             break;
@@ -57,6 +57,11 @@ public class GameMenuView extends MenuView {
         CropsView.growPopulationView();
         CropsView.displayCropsReportView();
     }
+    
+    public static void toolsView(){
+        ToolsView.displayTools();
+    }
+    
     
     public static void mapView() {
         
