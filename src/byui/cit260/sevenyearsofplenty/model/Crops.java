@@ -28,12 +28,16 @@ public class Crops implements Serializable {
     private int starvedPeople;
     private double productivity;
     private int foodSupplied;
+    private int moveCounter;
+    
+    
     private ArrayList<Game> games = new ArrayList<>();
 
     public Crops() {
     }
-        
+ 
 
+    
     public int getYear() {
         return year;
     }
@@ -148,6 +152,15 @@ public class Crops implements Serializable {
         this.games = games;
     }
 
+    public int getMoveCounter(){
+        return moveCounter;
+    }
+    
+    public void setMoveCounter(int moves) {
+        this.moveCounter += moves;
+    }
+ 
+   
     @Override
     public int hashCode() {
         int hash = 7;
@@ -161,6 +174,7 @@ public class Crops implements Serializable {
         hash = 61 * hash + this.fed;
         hash = 61 * hash + this.planted;
         hash = 61 * hash + this.foodSupplied;
+        hash = 61 * hash + this.moveCounter;
         return hash;
     }
 
@@ -217,7 +231,6 @@ public class Crops implements Serializable {
                 + harvest + ", pharoahsShare=" + pharoahsShare + ", fed=" 
                 + fed + ", planted=" + planted + '}';
     }
-    
-    
-    
+
+
 }

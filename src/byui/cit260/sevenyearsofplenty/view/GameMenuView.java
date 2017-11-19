@@ -54,6 +54,7 @@ public class GameMenuView extends MenuView {
     
     public static void manageCropsView () throws InterruptedException {
         CropsView.displayCropsReportView();
+        CropsView.getHints();
         CropsView.buyLandView();
         CropsView.sellLandView();
         CropsView.feedPeopleView();

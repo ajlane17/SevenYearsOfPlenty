@@ -6,6 +6,7 @@
 package byui.cit260.sevenyearsofplenty.control;
 
 import byui.cit260.sevenyearsofplenty.model.Crops;
+import byui.cit260.sevenyearsofplenty.view.CropsView;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.AfterClass;
 import org.junit.Test;
@@ -30,7 +31,11 @@ public class CropsControlTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-
+    
+    @Test 
+    public void getHints() {
+          }
+    
     /**
      * Test of payPharoah method, of class CropsControl.
      */

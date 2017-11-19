@@ -10,6 +10,8 @@ import byui.cit260.sevenyearsofplenty.control.GameControl;
 import byui.cit260.sevenyearsofplenty.model.Crops;
 import byui.cit260.sevenyearsofplenty.model.Game;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import sevenyearsofplenty.SevenYearsOfPlenty;
         
@@ -150,7 +152,7 @@ public class CropsView {
         String word = keyboard.next();
         char letter = word.charAt(0);
 
-
+       TimeUnit.SECONDS.sleep(1);
         switch (letter){
             case 'y':
             CropsControl.feedPeople(reqNutrition, bushels, theGame.getCrops());
@@ -167,6 +169,53 @@ public class CropsView {
                 System.out.println("You should enter a whole number of bushels "
                         + "to feed the People for this year.\n"
                         + "please enter the amount here: ");
+                break;
+            case 'm':
+                System.out.println("You have chosen wisely...\n"
++ "                  xxxXRRRMMMMMMMMMMMMMMMxxx,.\n" +
+"              xXXRRRRRXXXVVXVVXXXXXXXRRRRRMMMRx,\n" +
+"            xXRRXRVVVVVVVVVVVVVVVXXXXXRXXRRRMMMMMRx.\n" +
+"          xXRXXXVVVVVVVVVVVVVVVVXXXXVXXXXXXRRRRRMMMMMxx.\n" +
+"        xXRRXXVVVVVttVtVVVVVVVVVtVXVVVVXXXXXRRRRRRRMMMMMXx\n" +
+"      xXXRXXVVVVVtVttttttVtttttttttVXXXVXXXRXXRRRRRRRMMMMMMXx\n" +
+"     XRXRXVXXVVVVttVtttVttVttttttVVVVXXXXXXXXXRRRRRRRMMMMMMMMVx\n" +
+"    XRXXRXVXXVVVVtVtttttVtttttittVVVXXVXVXXXRXRRRRRMRRMMMMMMMMMX,\n" +
+"   XRRRMRXRXXXVVVXVVtttittttttttttVVVVXXVXXXXXXRRRRRMRMMMMMMMMMMM,\n" +
+"   XXXRRRRRXXXXXXVVtttttttttttttttttVtVXVXXXXXXXRRRRRMMMMMMMMMMMMM,\n" +
+"   XXXXRXRXRXXVXXVtVtVVttttttttttttVtttVXXXXXXXRRRRRMMMMMMMMMMMMMMMR\n" +
+"   VVXXXVRVVXVVXVVVtttititiitttttttttttVVXXXXXXRRRRRMRMMMMMMMMMMMMMMV\n" +
+"   VttVVVXRXVVXtVVVtttii|iiiiiiittttttttitXXXRRRRRRRRRRMMMMMMMMMMMMMM\n" +
+"   tiRVVXRVXVVVVVit|ii||iii|||||iiiiiitiitXXXXXXXXRRRRRRMMMMMMMMMMMMM\n" +
+"    +iVtXVttiiii|ii|+i+|||||i||||||||itiiitVXXVXXXRRRRRRRRMMMMMMRMMMX\n" +
+"    `+itV|++|tttt|i|+||=+i|i|iiii|iiiiiiiitiVtti+++++|itttRRRRRMVXVit\n" +
+"     +iXV+iVt+,tVit|+=i|||||iiiiitiiiiiiii|+| |it  ti+=++|+iVX RV  |t\n" +
+"     +iXtiXRXXi+Vt|i||+|++itititttttttti|iiiiitVtii:+++|+++iXRMMXXMR\n" +
+"     :iRtiXtiV||iVVt||||++ttittttttttttttttXXVXXRXRXXXtittt|iXRMMXRM\n" +
+"      :|t|iVtXV+=+Xtti+|++itiiititittttVttXXXXXXXRRRXVtVVtttttRRMMMM|\n" +
+"        +iiiitttt||i+++||+++|iiiiiiiiitVVVXXRXXXRRRRMXVVVVttVVVXRMMMV\n" +
+"         :itti|iVttt|+|++|++|||iiiiiiiittVVXRRRMMMMMMRVtitittiVXRRMMMV\n" +
+"           `i|iitVtXt+=||++++|++++|||+++iiiVVXVRXRRRV+=|tttttttiRRRMMM|\n" +
+"             i+++|+==++++++++++++++|||||||||itVVVViitt|+,,+,,=,+|itVX'\n" +
+"              |+++++.,||+|++++=+++++++|+|||||iitt||i||ii||||||itXt|\n" +
+"              t||+++,.=i+|+||+++++++++++++|i|ittiiii|iiitttttXVXRX|\n" +
+"              :||+++++.+++++++++|++|++++++|||iii||+:,:.-+:+|iViVXV\n" +
+"              iii||+++=.,+=,=,==++++++++++|||itttt|itiittXRXXXitV'\n" +
+"             ;tttii||++,.,,,.,,,,,=++++++++++|iittti|iiiiVXXXXXXV\n" +
+"            tVtttiii||++++=,,.  . ,,,=+++++++|itiiiiiii||||itttVt\n" +
+"           tVVttiiiii||||++++==,. ..,.,+++=++iiiiiitttttVVXXRRXXV\n" +
+"        ..ttVVttitttii||i|||||+|+=,.    .,,,,==+iittVVVXRRMXRRRV\n" +
+"...'''ittitttttitVttttiiiiii|ii|++++=+=..... ,.,,||+itiVVXXVXV\n" +
+"      ,|iitiiitttttttiiiii||ii||||||||+++++,.i|itVt+,,=,==.........\n" +
+"        ,|itiiiVtVtiii||iiiiii|||||||++||||tt|VXXRX|  ....  ..     ' ' '\n" +
+"          ,,i|ii||i||+|i|i|iiiiiiii||||ittRVVXRXRMX+, .  ...   .        ,\n" +
+"    .       .,+|++|||||ii|i|iiiitttVVttXVVXVXRRRRXt+. .....  . .      ,. .\n" +
+"  . .          ,,++|||||||i|iiitVVVXXXXVXXVXXRRRV+=,.....  ....  .      ..\n" +
+"                  .,,++|||i|iittXXXXRMViRXXXXRVt+=, ..    .......       ..\n" +
+"                   ,XX+.=+++iitVVXXXRXVtXXVRRV++=,..... .,, .            .\n" +
+"            ....       +XX+|i,,||tXRRRXVXti|+++,,. .,,. . . ...     . ....\n" +
+"  . .          .      ..  ..........++,,..,...,.... ..             .. ...\n"
+                        + "You have made it so... far...");
+ 
                 break;
             default:
             System.out.println("You should press either 'y' for yes, or 'n' "
@@ -281,6 +330,16 @@ public class CropsView {
      System.out.println("Mastery is : " + Mastery + "\n\n\n");
     }
     
+    public static void getHints(){
+            System.out.println("###########################################"
+                             + "# here's a game hint that You can utilize #"
+                             + "###########################################");
+        
+        final String[] hint = {"hint 1", "hint 2", "hint 3"};
+            Random pickHint = new Random();
+            int index = pickHint.nextInt(hint.length);
+            System.out.println(hint[index]);
+    }
     public static void growPopulationView() {
         
     }
