@@ -66,7 +66,7 @@ public class MapView {
         for(Location[] location: locations) { 
             for(Location details: location) 
                 System.out.format("\n%d,%d: %s", details.getRow(),
-                        details.getColumn(),"Location Name");
+                        details.getColumn(), details.getName());
         } 
     }
 }

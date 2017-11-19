@@ -17,6 +17,7 @@ public class Location implements Serializable {
     // Class instance variables
     private int row;
     private int column;
+    private String name;
     private String description;
     private String symbol;
 
@@ -37,6 +38,14 @@ public class Location implements Serializable {
 
     public void setColumn(int column) {
         this.column = column;
+    }
+    
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
