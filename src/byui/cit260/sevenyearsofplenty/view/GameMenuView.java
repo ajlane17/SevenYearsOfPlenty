@@ -5,7 +5,7 @@
  */
 package byui.cit260.sevenyearsofplenty.view;
 
-import java.util.Scanner;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -56,7 +56,6 @@ public class GameMenuView extends MenuView {
     
     public static void manageCropsView () throws InterruptedException {
         CropsView.displayCropsReportView();
-        CropsView.getHints();
         CropsView.buyLandView();
         CropsView.sellLandView();
         CropsView.feedPeopleView();
