@@ -27,6 +27,7 @@ public class Crops implements Serializable {
     private int planted;
     private int starvedPeople;
     private double productivity;
+    private int foodSupplied;
     private ArrayList<Game> games = new ArrayList<>();
 
     public Crops() {
@@ -38,7 +39,7 @@ public class Crops implements Serializable {
     }
 
     public void setYear(int year) {
-        this.year = year;
+        this.year += year;
     }
     
     public int setStarvedPeople(int newStarvedPeople) {
@@ -122,6 +123,14 @@ public class Crops implements Serializable {
     public void setFed(int fed) {
         this.fed = fed;
     }
+    
+    public int getFoodSupplied() {
+        return foodSupplied;
+    }
+
+    public void setFoodSupplied(int supplied) {
+        this.foodSupplied = supplied;
+    }
 
     public int getPlanted() {
         return planted;
@@ -151,6 +160,7 @@ public class Crops implements Serializable {
         hash = 61 * hash + this.pharoahsShare;
         hash = 61 * hash + this.fed;
         hash = 61 * hash + this.planted;
+        hash = 61 * hash + this.foodSupplied;
         return hash;
     }
 

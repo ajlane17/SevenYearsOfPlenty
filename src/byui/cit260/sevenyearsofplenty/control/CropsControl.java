@@ -38,7 +38,8 @@ public class CropsControl {
         }
     }
 
-    public static int buyLand(int landPrice, int acresToBuy, Crops theCropsObj) {
+    public static int buyLand(int landPrice, int acresToBuy, 
+            Crops theCropsObj) {
 
         int wheatInStore = theCropsObj.getWheatInStore();
         int acresOwned = theCropsObj.getAcres();
@@ -68,7 +69,8 @@ public class CropsControl {
         }
     }
     
-    public static int sellLand(int landPrice, int acresToSell, Crops theCropsObj){ 
+    public static int sellLand(int landPrice, int acresToSell, 
+            Crops theCropsObj){ 
         int wheatInStore = theCropsObj.getWheatInStore(); 
         int acresOwned = theCropsObj.getAcres(); 
          
@@ -109,7 +111,8 @@ public class CropsControl {
          
         //Calculate how much did rats eat 
         if (rats){ 
-            ratTax = ThreadLocalRandom.current() .nextInt(ratTaxLow, ratTaxHigh +1); 
+            ratTax = ThreadLocalRandom.current() .nextInt(ratTaxLow, 
+                    ratTaxHigh +1); 
             ratTax = ratTax/100; 
             ratTax = ratTax * harvest;
             harvest = harvest - (int)ratTax; 
@@ -129,13 +132,16 @@ public class CropsControl {
 
         //reqNutrition is how much each Member of the Population needs each year
     //to be sustained.  
-    public static int feedPeople(int reqNutrition, int feedAmount, Crops theCropsObj) {
+    public static int feedPeople(int reqNutrition, int feedAmount, 
+            Crops theCropsObj) {
         int wheatInStore = theCropsObj.getWheatInStore();
         int currPopulation = theCropsObj.getPopulation();
         double productivity;
-
+        theCropsObj.setFoodSupplied(feedAmount);
+        
         if (feedAmount <= 0 || wheatInStore <= 0 || currPopulation <= 0
-                || reqNutrition <= 0 || reqNutrition > feedAmount || feedAmount > wheatInStore) {
+                || reqNutrition <= 0 || reqNutrition > feedAmount 
+                || feedAmount > wheatInStore) {
             return -1;
         } else {
             theCropsObj.setWheatInStore(wheatInStore -= feedAmount);
@@ -149,7 +155,7 @@ public class CropsControl {
                 currPopulation = fedPopulation;
                 theCropsObj.setPopulation(currPopulation);
             }
-
+            
             return currPopulation;
         }
     }
@@ -173,4 +179,4 @@ public class CropsControl {
     public static int calcLandCost() {
         return 10;
     }
-}
+ }

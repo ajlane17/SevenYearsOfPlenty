@@ -65,10 +65,14 @@ public class CropsControlTest {
         CropsControl.payPharoah(payPharoahCropsObj);
         pharoahsShareResult = payPharoahCropsObj.getPharoahsShare();
         wheatInStoreResult = payPharoahCropsObj.getWheatInStore();
-        assertTrue("Error, result is too low", pharoahsShareResult >= pharoahsShareLow);
-        assertTrue("Error, result is too high", pharoahsShareResult <= pharoahsShareHigh);
-        assertTrue("Error, result is too low", wheatInStoreResult >= wheatInStoreLow);
-        assertTrue("Error, result is too high", wheatInStoreResult <= wheatInStoreHigh);
+        assertTrue("Error, result is too low", pharoahsShareResult 
+                >= pharoahsShareLow);
+        assertTrue("Error, result is too high", pharoahsShareResult 
+                <= pharoahsShareHigh);
+        assertTrue("Error, result is too low", wheatInStoreResult 
+                >= wheatInStoreLow);
+        assertTrue("Error, result is too high", wheatInStoreResult 
+                <= wheatInStoreHigh);
         
         // Test Case #3
         System.out.println("payPharoah #3");
@@ -80,10 +84,14 @@ public class CropsControlTest {
         CropsControl.payPharoah(payPharoahCropsObj);
         pharoahsShareResult = payPharoahCropsObj.getPharoahsShare();
         wheatInStoreResult = payPharoahCropsObj.getWheatInStore();
-        assertTrue("Error, result is too low", pharoahsShareResult >= pharoahsShareLow);
-        assertTrue("Error, result is too high", pharoahsShareResult <= pharoahsShareHigh);
-        assertTrue("Error, result is too low", wheatInStoreResult >= wheatInStoreLow);
-        assertTrue("Error, result is too high", wheatInStoreResult <= wheatInStoreHigh);
+        assertTrue("Error, result is too low", pharoahsShareResult 
+                >= pharoahsShareLow);
+        assertTrue("Error, result is too high", pharoahsShareResult 
+                <= pharoahsShareHigh);
+        assertTrue("Error, result is too low", wheatInStoreResult 
+                >= wheatInStoreLow);
+        assertTrue("Error, result is too high", wheatInStoreResult 
+                <= wheatInStoreHigh);
     
         // Test Case #4
         System.out.println("payPharoah #4");
@@ -108,58 +116,58 @@ public class CropsControlTest {
      */
     @Test
     public void testBuyLand() {
-        
-        Crops testBuyLandCropsObj = new Crops();
-        int landPrice;
-        int acresToBuy;
-        int expResult;
-        int result;
 
-        // Test Case #1
-        System.out.println("buyLand #1");
-        landPrice = 20;
-        acresToBuy = 10;
-        testBuyLandCropsObj.setWheatInStore(2800);
-        expResult = 2600;
-        result = CropsControl.buyLand(landPrice, acresToBuy, testBuyLandCropsObj);
-        assertEquals(expResult, result);
+    Crops testBuyLandCropsObj = new Crops();
+    int landPrice;
+    int acresToBuy;
+    int expResult;
+    int result;
 
-        // Test Case #2
-        System.out.println("buyLand #2");
-        landPrice = 20;
-        acresToBuy = -5;
-        testBuyLandCropsObj.setWheatInStore(2800);
-        expResult = -1;
-        result = CropsControl.buyLand(landPrice, acresToBuy, testBuyLandCropsObj);
-        assertEquals(expResult, result);
-        
-        // Test Case #3
-        System.out.println("buyLand #3");
-        landPrice = 20;
-        acresToBuy = 200;
-        testBuyLandCropsObj.setWheatInStore(2800);
-        expResult = -1;
-        result = CropsControl.buyLand(landPrice, acresToBuy, testBuyLandCropsObj);
-        assertEquals(expResult, result);
-        
-        // Test Case #4
-        System.out.println("buyLand #4");
-        landPrice = 10;
-        acresToBuy = 200;
-        testBuyLandCropsObj.setWheatInStore(2000);
-        expResult = 0;
-        result = CropsControl.buyLand(landPrice, acresToBuy, testBuyLandCropsObj);
-        assertEquals(expResult, result);
-        
-        // Test Case #5
-        System.out.println("buyLand #5");
-        landPrice = 10;
-        acresToBuy = 0;
-        testBuyLandCropsObj.setWheatInStore(2000);
-        expResult = 2000;
-        result = CropsControl.buyLand(landPrice, acresToBuy, testBuyLandCropsObj);
-        assertEquals(expResult, result);
-    }
+    // Test Case #1
+    System.out.println("buyLand #1");
+    landPrice = 20;
+    acresToBuy = 10;
+    testBuyLandCropsObj.setWheatInStore(2800);
+    expResult = 2600;
+    result = CropsControl.buyLand(landPrice, acresToBuy, testBuyLandCropsObj);
+    assertEquals(expResult, result);
+
+    // Test Case #2
+    System.out.println("buyLand #2");
+    landPrice = 20;
+    acresToBuy = -5;
+    testBuyLandCropsObj.setWheatInStore(2800);
+    expResult = -1;
+    result = CropsControl.buyLand(landPrice, acresToBuy, testBuyLandCropsObj);
+    assertEquals(expResult, result);
+
+    // Test Case #3
+    System.out.println("buyLand #3");
+    landPrice = 20;
+    acresToBuy = 200;
+    testBuyLandCropsObj.setWheatInStore(2800);
+    expResult = -1;
+    result = CropsControl.buyLand(landPrice, acresToBuy, testBuyLandCropsObj);
+    assertEquals(expResult, result);
+
+    // Test Case #4
+    System.out.println("buyLand #4");
+    landPrice = 10;
+    acresToBuy = 200;
+    testBuyLandCropsObj.setWheatInStore(2000);
+    expResult = 0;
+    result = CropsControl.buyLand(landPrice, acresToBuy, testBuyLandCropsObj);
+    assertEquals(expResult, result);
+
+    // Test Case #5
+    System.out.println("buyLand #5");
+    landPrice = 10;
+    acresToBuy = 0;
+    testBuyLandCropsObj.setWheatInStore(2000);
+    expResult = 2000;
+    result = CropsControl.buyLand(landPrice, acresToBuy, testBuyLandCropsObj);
+    assertEquals(expResult, result);
+}
 
     /**
      * Test of plantCrops method, of class CropsControl.
@@ -267,7 +275,8 @@ public class CropsControlTest {
         acresToSell = 20; 
         testSellLandCropsObj.setWheatInStore(2000); 
         expResult = -1; 
-        result = CropsControl.sellLand(landPrice, acresToSell, testSellLandCropsObj); 
+        result = CropsControl.sellLand(landPrice, acresToSell, 
+                testSellLandCropsObj); 
         assertEquals(expResult, result); 
          
         // Test Case #2 
@@ -276,7 +285,8 @@ public class CropsControlTest {
         acresToSell = -5; 
         testSellLandCropsObj.setWheatInStore(2000); 
         expResult = -1; 
-        result = CropsControl.sellLand(landPrice, acresToSell, testSellLandCropsObj); 
+        result = CropsControl.sellLand(landPrice, acresToSell, 
+                testSellLandCropsObj); 
         assertEquals(expResult, result);         
        
         // Test Case #3 
@@ -285,7 +295,8 @@ public class CropsControlTest {
         acresToSell = 250; 
         testSellLandCropsObj.setWheatInStore(2000); 
         expResult = -1; 
-        result = CropsControl.sellLand(landPrice, acresToSell, testSellLandCropsObj); 
+        result = CropsControl.sellLand(landPrice, acresToSell, 
+                testSellLandCropsObj); 
         assertEquals(expResult, result); 
          
         // Test Case #4 
@@ -294,7 +305,8 @@ public class CropsControlTest {
         acresToSell = 0; 
         testSellLandCropsObj.setWheatInStore(2000); 
         expResult = 2000; 
-        result = CropsControl.sellLand(landPrice, acresToSell, testSellLandCropsObj); 
+        result = CropsControl.sellLand(landPrice, acresToSell, 
+                testSellLandCropsObj); 
         assertEquals(expResult, result); 
          
         // Test Case #5 
@@ -303,7 +315,8 @@ public class CropsControlTest {
         acresToSell = 200; 
         testSellLandCropsObj.setWheatInStore(2000); 
         expResult = -1; 
-        result = CropsControl.sellLand(landPrice, acresToSell, testSellLandCropsObj); 
+        result = CropsControl.sellLand(landPrice, acresToSell, 
+                testSellLandCropsObj); 
         assertEquals(expResult, result); 
     } 
 
@@ -364,8 +377,10 @@ public class CropsControlTest {
         feedAmount = 1000; //this is how much will be distributed
         theCropsObj.setWheatInStore(1050);
         theCropsObj.setPopulation(101);
-        System.out.println("wheatInStore was : " + theCropsObj.getWheatInStore());
-        System.out.println("the Population was : " + theCropsObj.getPopulation());
+        System.out.println("wheatInStore was : " + 
+                theCropsObj.getWheatInStore());
+        System.out.println("the Population was : " + 
+                theCropsObj.getPopulation());
         expResult = 100;
         result = CropsControl.feedPeople(reqNutrition, feedAmount, theCropsObj);
         assertEquals(expResult, result);
@@ -373,7 +388,8 @@ public class CropsControlTest {
         int newWheatInStore = theCropsObj.getWheatInStore();
         System.out.println("           wheatInStore: " + newWheatInStore);
         System.out.println("              fedPeople: " + result);
-        System.out.println("          starvedPeople: " + theCropsObj.getStarvedPeople());
+        System.out.println("          starvedPeople: " + 
+                theCropsObj.getStarvedPeople());
         System.out.println("         new Population: " + newPopulation);
     }
 //------------------------------------------------------------------------------    
@@ -407,16 +423,15 @@ public class CropsControlTest {
         theCropsObj.setProductivity(1.11);
         theCropsObj.setPopulation(25000);
    
-        System.out.println(theCropsObj.getGrowthRate());
-        System.out.println(theCropsObj.getCropYield());       
-        System.out.println(theCropsObj.getProductivity());        
-        System.out.println(theCropsObj.getPopulation());        
-        
+//        System.out.println(theCropsObj.getGrowthRate());
+//        System.out.println(theCropsObj.getCropYield());       
+//        System.out.println(theCropsObj.getProductivity());        
+//        System.out.println(theCropsObj.getPopulation());        
+//        
         System.out.println("#2 growPopulation");
         int thisResult = CropsControl.growPopulation(theCropsObj);
         System.out.println("growPopulation results are :" + thisResult);
         System.out.println("the expected results are: 34000");
         
     }
-    
 }
