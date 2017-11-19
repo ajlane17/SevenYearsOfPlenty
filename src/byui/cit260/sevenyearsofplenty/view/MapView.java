@@ -5,8 +5,10 @@
  */
 package byui.cit260.sevenyearsofplenty.view;
 
+import byui.cit260.sevenyearsofplenty.control.MapControl;
 import byui.cit260.sevenyearsofplenty.model.Game;
 import byui.cit260.sevenyearsofplenty.model.Location;
+import java.util.Scanner;
 import sevenyearsofplenty.SevenYearsOfPlenty;
 
 /**
@@ -19,7 +21,10 @@ public class MapView {
         
         Game theGame = SevenYearsOfPlenty.getGame();
         
-        Location[][] locations = theGame.getPlayerMap().getLocation();
+        Location[][] locations = theGame.getPlayerMap().getLocations();
+        int currentX = theGame.getPlayerMap().getCurrLocationX();
+        int currentY = theGame.getPlayerMap().getCurrLocationY();
+        
         String rowFormat = "  %-2d,%-2d |";
         
         for(int i =0; i < locations.length; i++) {
@@ -59,14 +64,50 @@ public class MapView {
             }
         }
         
-        System.out.println("\nCurrent location: 0,0");
-        // TODO: include the logic to get the current location
-        
         // display locations
         for(Location[] location: locations) { 
             for(Location details: location) 
                 System.out.format("\n%d,%d: %s", details.getRow(),
                         details.getColumn(), details.getName());
-        } 
+        }
+        
+        System.out.format("\n\nCurrent location: %d,%d", currentX, currentY);
+        System.out.format("\nLocation Name: %s", 
+                locations[currentX][currentY].getName());
+        System.out.format("\nLocation Description: %s", 
+                locations[currentX][currentY].getDescription());
+    }
+    
+    public static void moveToLocation() {
+
+        Scanner keyboard = new Scanner(System.in);
+        Game theGame = SevenYearsOfPlenty.getGame();
+        int xMax = theGame.getPlayerMap().getLocations().length - 1;
+        int yMax = theGame.getPlayerMap().getLocations()[0].length - 1;
+        int x = 0;
+        int y = 0;
+        
+        do
+        {
+          System.out.print("Please enter X Coordinate: ");
+          x = keyboard.nextInt();
+          if(x < 0 || x > xMax)
+          {
+              System.out.println("Error: invalid option.");
+          }
+        } while(x < 0 || x > xMax);
+        
+        do
+        {
+          System.out.print("Please enter Y Coordinate: ");
+          y = keyboard.nextInt();
+          if(y < 0 || y > yMax)
+          {
+              System.out.println("Error: invalid option.");
+          }
+        } while(y < 0 || y > xMax);
+        
+        MapControl.moveToLocation(theGame.getPlayerMap(), x, y);
+        
     }
 }

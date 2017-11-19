@@ -15,28 +15,33 @@ import byui.cit260.sevenyearsofplenty.model.PlayerMap;
 public class MapControl {
     
     private static String[][] locationInfo = {
-        {"Pharoah's Court", ""},
-        {"Pharoah's Granary", ""},
+        {"Pharoah's Court", "Could be the main menu"},
+        {"Pharoah's Granary", "Provides inventory and supplies"},
         {"Wheat Field", "A beautiful wheat field"},
         {"Corn Field", "There is so much corn here"},
         {"Barley Field", "The barley crops look good"},
         {"Undeveloped Land", "Perhaps we could add more acres of grain here"},
         {"Desert", "There is not enough water to grow crops here"},
-        {"Village", "This is where the people live. I wonder if they are getting enough food"},
-        {"Cattle Field", "It's good that the cattle has plenty of grass to eat"},
+        {"Village", "This is where the people live. I wonder if they are "
+            + "getting enough food"},
+        {"Cattle Field", "It's good that the cattle has plenty of "
+            + "grass to eat"},
         {"Stables", "The pharoah has many horses and donkeys"},
-        {"Sheep and Goat Field", "It's good that the sheep and goats have plenty of grass to eat"},
-        {"Pig Sty", "The pig sty needs some cleaning. It's starting to smell bad"},
+        {"Sheep and Goat Field", "It's good that the sheep and goats have"
+            + " plenty of grass to eat"},
+        {"Pig Sty", "The pig sty needs some cleaning. It's starting to "
+            + "smell bad"},
         {"Tool Workshop", "We need to sharpen and repair our tools"},
         {"Nile River", "Be careful of the crocodiles"},
-        {"Joseph's Office", ""},
-        {"Overseer's Office", ""},
-        {"Overseer's Home", ""},
+        {"Joseph's Office", "Could be the game menu"},
+        {"Overseer's Office", "Could be the manage crops view"},
+        {"Overseer's Home", "We have no time to rest until the harvest "
+            + "is over"},
         {"Pyramids in Giza", "This is no time to site see"},
-        {"King's Treasury", "Only Joseph and PHaroah are allowed"},
+        {"King's Treasury", "Only Joseph and Pharoah are allowed"},
         {"Marshes", "Beautiful. Is a baby in a basket floating by?"},
-        {"Library", ""},
-        {"Temple", ""},
+        {"Library", "Could be the help menu"},
+        {"Temple", "Receive extra help"},
         {"Jeweler's Shop", "Don't waste time buting jewelry"},
         {"Captain of the Military", "Can you take care of the bandits?"},
         {"Pest Control Office", "What about these rats?"}
@@ -60,7 +65,19 @@ public class MapControl {
             }
         }
         
-        map.setLocation(locations);
+        map.setLocations(locations);
+        map.setCurrLocationX(0);
+        map.setCurrLocationY(0);
+    }
+    
+    public static void moveToLocation(PlayerMap map, int row, int column) {
+        map.setCurrLocationX(row);
+        map.setCurrLocationY(column);
+        Location[][] location = map.getLocations();
+        String name = location[row][column].getName();
+        String description = location[row][column].getDescription();
+        System.out.format("\nLocation: %s", name);
+        System.out.format("\nDescription: %s", description);
     }
     
 }

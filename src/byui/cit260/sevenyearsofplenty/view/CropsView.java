@@ -7,6 +7,7 @@ package byui.cit260.sevenyearsofplenty.view;
 
 import byui.cit260.sevenyearsofplenty.control.CropsControl;
 import byui.cit260.sevenyearsofplenty.control.GameControl;
+import byui.cit260.sevenyearsofplenty.control.MapControl;
 import byui.cit260.sevenyearsofplenty.model.Crops;
 import byui.cit260.sevenyearsofplenty.model.Game;
 import java.util.Scanner;

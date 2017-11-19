@@ -33,7 +33,7 @@ public class GameMenuView extends MenuView {
                 toolsView();
                 livestockView();
             break;
-            case 3: quit();
+            case 3: moveToLocation();
             break;
             case 4: {
             try {
@@ -80,5 +80,10 @@ public class GameMenuView extends MenuView {
         
         MapView.displayMap();
         
+    }
+    
+    public static void moveToLocation() {
+        
+        MapView.moveToLocation();
     }
 }

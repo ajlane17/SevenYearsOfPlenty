@@ -19,16 +19,16 @@ import java.io.Serializable;
 
 public class PlayerMap implements Serializable {
 
-private int rowCount;
-private int colCount;
-private Location[][] locations;
+    private int rowCount;
+    private int colCount;
+    private Location[][] locations;
+    private int currLocationX;
+    private int currLocationY;
 
+    
+    public PlayerMap(){
 
-
-
-public PlayerMap(){
-
-}
+    }
 
     /**
      * @return the rowCount
@@ -58,13 +58,31 @@ public PlayerMap(){
         this.colCount = colCount;
     }
 
-    public Location[][] getLocation() {
+    public Location[][] getLocations() {
         return locations;
     }
 
-    public void setLocation(Location[][] locations) {
+    public void setLocations(Location[][] locations) {
         this.locations = locations;
     }
+
+    public int getCurrLocationX() {
+        return currLocationX;
+    }
+
+    public void setCurrLocationX(int currLocatonX) {
+        this.currLocationX = currLocatonX;
+    }
+
+    public int getCurrLocationY() {
+        return currLocationY;
+    }
+
+    public void setCurrLocationY(int currLocationY) {
+        this.currLocationY = currLocationY;
+    }
+
+
 
     @Override
     public String toString() {
