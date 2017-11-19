@@ -12,17 +12,19 @@ import java.lang.reflect.Array;
  * @author ajlan
  */
 public class LivestockView {
-    
-    private static String cows[] = {"Cows", "30"};
-    private static String goats[] = {"Goats", "15"};
-    private static String sheep[] = {"Sheep", "12"};
-    private static String alpacas[] = {"Alpacas", "5"};
+    // Animals include name, count, and number of feet/hooves
+    private static final String COWS_OBJ[] = {"Cows", "30", "4"};
+    private static final String GOATS_OBJ[] = {"Goats", "15", "4"};
+    private static final String SHEEP_OBJ[] = {"Sheep", "12", "4"};
+    private static final String ALPACAS_OBJ[] = {"Alpacas", "5", "4"};
+    private static final String CHICKENS_OBJ[] = {"Chickens", "7", "2"};
     
     enum Livestock {
-        COWS(cows),
-        GOATS(goats),
-        SHEEP(sheep),
-        ALPACAS(alpacas)
+        COWS(COWS_OBJ),
+        GOATS(GOATS_OBJ),
+        SHEEP(SHEEP_OBJ),
+        ALPACAS(ALPACAS_OBJ),
+        CHICKENS(CHICKENS_OBJ)
         ;
     
         private final String[] livestockValue;
@@ -38,15 +40,24 @@ public class LivestockView {
     
     public static void showLivestockInventory() {
         
-        String rowFormat = "\nAnimal: %-10s Count: %-3s";
+        String rowFormat = "\nAnimal: %-8s Count: %-3s";
+        int feetOnTheGround = 0;
+        String[] animal;
+        int count = 0;
+        int feet = 0;
         
         System.out.println("\n#############################\n"
                          + "#     Current Livestock     #\n"
-                         + "#############################\n");
+                         + "#############################");
     
         for (Livestock livestock : Livestock.values()) {
-            System.out.format(rowFormat, livestock.getLivestockValue()[0], 
-                    livestock.getLivestockValue()[1]);
+            animal = livestock.getLivestockValue();
+            count = Integer.parseInt(animal[1]);
+            feet = Integer.parseInt(animal[2]);
+            System.out.format(rowFormat, animal[0], animal[1]);
+            feetOnTheGround = feetOnTheGround + (count * feet);
         }
+        
+        System.out.format("\nTotal feet on the ground: %d", feetOnTheGround);
     }
 }

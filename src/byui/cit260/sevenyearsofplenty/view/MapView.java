@@ -20,7 +20,7 @@ public class MapView {
         Game theGame = SevenYearsOfPlenty.getGame();
         
         Location[][] locations = theGame.getPlayerMap().getLocation();
-        String rowFormat = "   %-4s |";
+        String rowFormat = "  %-2d,%-2d |";
         
         for(int i =0; i < locations.length; i++) {
             // loop three times for each "row"
@@ -31,7 +31,8 @@ public class MapView {
                         if (j == 0) {
                             System.out.print("|");
                         }
-                        System.out.format(rowFormat, locations[i][j].getSymbol());
+                        System.out.format(rowFormat, locations[i][j].getRow(),
+                                locations[i][j].getColumn());
                         if (j == locations[i].length - 1) {
                             System.out.print("\n");                        
                         }
@@ -58,13 +59,14 @@ public class MapView {
             }
         }
         
-        System.out.println("\nCurrent location: 1");
+        System.out.println("\nCurrent location: 0,0");
         // TODO: include the logic to get the current location
         
         // display locations
         for(Location[] location: locations) { 
             for(Location details: location) 
-                System.out.format("\n%-2s: %s", details.getSymbol(), "Location Name"); 
+                System.out.format("\n%d,%d: %s", details.getRow(),
+                        details.getColumn(),"Location Name");
         } 
     }
 }
