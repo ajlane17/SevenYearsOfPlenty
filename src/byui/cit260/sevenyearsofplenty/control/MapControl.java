@@ -5,6 +5,7 @@
  */
 package byui.cit260.sevenyearsofplenty.control;
 
+import byui.cit260.sevenyearsofplenty.exceptions.MapControlException;
 import byui.cit260.sevenyearsofplenty.model.Location;
 import byui.cit260.sevenyearsofplenty.model.PlayerMap;
 
@@ -68,9 +69,20 @@ public class MapControl {
         map.setLocations(locations);
         map.setCurrLocationX(0);
         map.setCurrLocationY(0);
+        map.setRowCount(rows);
+        map.setColCount(columns);
     }
     
-    public static void moveToLocation(PlayerMap map, int row, int column) {
+    public static void moveToLocation(PlayerMap map, int row, int column) 
+    throws MapControlException {
+        int rowCount = map.getRowCount();
+        int colCount = map.getColCount();
+        
+        if (row < 0 || row >= rowCount || column < 0 || column >= colCount) {
+            throw new MapControlException("Can't move to location " + row + ","
+            + column + " becuase that location does not exist.");
+        }
+        
         map.setCurrLocationX(row);
         map.setCurrLocationY(column);
         Location[][] location = map.getLocations();

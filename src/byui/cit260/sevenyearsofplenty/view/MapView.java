@@ -6,6 +6,7 @@
 package byui.cit260.sevenyearsofplenty.view;
 
 import byui.cit260.sevenyearsofplenty.control.MapControl;
+import byui.cit260.sevenyearsofplenty.exceptions.MapControlException;
 import byui.cit260.sevenyearsofplenty.model.Game;
 import byui.cit260.sevenyearsofplenty.model.Location;
 import java.util.Scanner;
@@ -82,32 +83,25 @@ public class MapView {
 
         Scanner keyboard = new Scanner(System.in);
         Game theGame = SevenYearsOfPlenty.getGame();
-        int xMax = theGame.getPlayerMap().getLocations().length - 1;
-        int yMax = theGame.getPlayerMap().getLocations()[0].length - 1;
+        int xMax = theGame.getPlayerMap().getRowCount() - 1;
+        int yMax = theGame.getPlayerMap().getColCount() - 1;
         int x = 0;
         int y = 0;
+        boolean loop = true;
         
         do
         {
-          System.out.print("Please enter X Coordinate: ");
-          x = keyboard.nextInt();
-          if(x < 0 || x > xMax)
-          {
-              System.out.println("Error: invalid option.");
-          }
-        } while(x < 0 || x > xMax);
-        
-        do
-        {
-          System.out.print("Please enter Y Coordinate: ");
-          y = keyboard.nextInt();
-          if(y < 0 || y > yMax)
-          {
-              System.out.println("Error: invalid option.");
-          }
-        } while(y < 0 || y > xMax);
-        
-        MapControl.moveToLocation(theGame.getPlayerMap(), x, y);
+            System.out.print("Please enter X Coordinate: ");
+            x = keyboard.nextInt();
+            System.out.print("Please enter Y Coordinate: ");
+            y = keyboard.nextInt();
+            try {
+                MapControl.moveToLocation(theGame.getPlayerMap(), x, y);
+                loop = false;
+            } catch (MapControlException me) {
+                System.out.println(me.getMessage());
+            }
+        } while(loop);
         
     }
 }

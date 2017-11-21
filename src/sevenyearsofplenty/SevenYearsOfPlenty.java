@@ -22,7 +22,13 @@ public class SevenYearsOfPlenty {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MainMenuView.onStartupView();
+        try {
+            MainMenuView.onStartupView();
+        } catch (Throwable te) {
+            System.out.println(te.getMessage());
+            te.printStackTrace();
+            MainMenuView.onStartupView();          
+        }
     }
 
     public static Game getGame() {
