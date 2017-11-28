@@ -64,32 +64,33 @@ public class CropsControl {
 
         int wheatInStore = theCropsObj.getWheatInStore();
         int acres = theCropsObj.getAcres();
-        if (bushelsToSpend > wheatInStore || bushelsToSpend * 2 > acres) {
-            throw new CropsControlException("You're trying to plant more land"
-                    + "than you're allowed.");
+        if (bushelsToSpend > wheatInStore || bushelsToSpend * 2 > acres
+                || bushelsToSpend < 0) {
+            throw new CropsControlException("You're trying to plant more land "
+                    + "than you're allowed, or a negative number.");
         } else {
             theCropsObj.setPlanted(bushelsToSpend * 2);
             theCropsObj.setWheatInStore(wheatInStore - bushelsToSpend);
         }
     }
-    
-    public static int sellLand(int landPrice, int acresToSell, 
+
+    public static int sellLand(int landPrice, int acresToSell,
             Crops theCropsObj)
-       throws CropsControlException { 
-        int wheatInStore = theCropsObj.getWheatInStore(); 
-        int acresOwned = theCropsObj.getAcres(); 
-         
-        if(acresToSell < 0 || acresToSell > acresOwned){ 
+            throws CropsControlException {
+        int wheatInStore = theCropsObj.getWheatInStore();
+        int acresOwned = theCropsObj.getAcres();
+
+        if (acresToSell < 0 || acresToSell > acresOwned) {
             throw new CropsControlException("A negative value was input");
-        } else { 
-            acresOwned = acresOwned - acresToSell; 
-            theCropsObj.setAcres(acresOwned); 
-             
-            wheatInStore = wheatInStore + (acresToSell * landPrice); 
-            theCropsObj.setWheatInStore(wheatInStore); 
-             
-            return wheatInStore; 
-        } 
+        } else {
+            acresOwned = acresOwned - acresToSell;
+            theCropsObj.setAcres(acresOwned);
+
+            wheatInStore = wheatInStore + (acresToSell * landPrice);
+            theCropsObj.setWheatInStore(wheatInStore);
+
+            return wheatInStore;
+        }
     }
 
     public static int harvestCrops(Crops theCropsObj) {

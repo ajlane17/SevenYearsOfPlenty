@@ -17,5 +17,5 @@ public class MapControlException extends Exception {
     public MapControlException(String message) {
         super(message);
     }
-    
+
 }

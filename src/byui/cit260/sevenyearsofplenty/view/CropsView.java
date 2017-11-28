@@ -229,24 +229,14 @@ public class CropsView {
         do {
             System.out.print("\nHow many bushels would you like to use to plant? ");
             bushelsToSpend = keyboard.nextInt();
-            if (bushelsToSpend < 0) {
-                System.out.println("I am sorry master, I cannot do this.");
-                System.out.println("You cannot buy a negative amount of acres.");
-            } else if (bushelsToSpend > wheat) {
-                System.out.println("I am sorry master, I cannot do this.");
-                System.out.println("You do not have enough wheat to buy this much "
-                        + "land.");
-            } else if (bushelsToSpend * 2 > acres) {
-                System.out.println("I am sorry master, I cannot do this.");
-                System.out.println("You cannot plant more acres than you have.");
-            }
+            try {
+                CropsControl.plantCrops(bushelsToSpend, theGame.getCrops());
+            } catch (CropsControlException me) {
+                System.out.println(me.getMessage());
+            }            
         } while (bushelsToSpend < 0 || bushelsToSpend > wheat
                 || bushelsToSpend * 2 > acres);
-        try {
-            CropsControl.plantCrops(bushelsToSpend, theGame.getCrops());
-        } catch (CropsControlException me) {
-            System.out.println(me.getMessage());
-        }
+
 
     }
 
