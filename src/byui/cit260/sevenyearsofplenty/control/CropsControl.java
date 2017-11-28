@@ -72,23 +72,24 @@ public class CropsControl {
             theCropsObj.setWheatInStore(wheatInStore - bushelsToSpend);
         }
     }
-
-    public static int sellLand(int landPrice, int acresToSell,
-            Crops theCropsObj) {
-        int wheatInStore = theCropsObj.getWheatInStore();
-        int acresOwned = theCropsObj.getAcres();
-
-        if (acresToSell < 0 || acresToSell > acresOwned) {
-            return -1;
-        } else {
-            acresOwned = acresOwned - acresToSell;
-            theCropsObj.setAcres(acresOwned);
-
-            wheatInStore = wheatInStore + (acresToSell * landPrice);
-            theCropsObj.setWheatInStore(wheatInStore);
-
-            return wheatInStore;
-        }
+    
+    public static int sellLand(int landPrice, int acresToSell, 
+            Crops theCropsObj)
+       throws CropsControlException { 
+        int wheatInStore = theCropsObj.getWheatInStore(); 
+        int acresOwned = theCropsObj.getAcres(); 
+         
+        if(acresToSell < 0 || acresToSell > acresOwned){ 
+            throw new CropsControlException("A negative value was input");
+        } else { 
+            acresOwned = acresOwned - acresToSell; 
+            theCropsObj.setAcres(acresOwned); 
+             
+            wheatInStore = wheatInStore + (acresToSell * landPrice); 
+            theCropsObj.setWheatInStore(wheatInStore); 
+             
+            return wheatInStore; 
+        } 
     }
 
     public static int harvestCrops(Crops theCropsObj) {

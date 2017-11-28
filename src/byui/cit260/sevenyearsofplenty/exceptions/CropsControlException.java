@@ -7,8 +7,14 @@ package byui.cit260.sevenyearsofplenty.exceptions;
 
 /**
  *
- * @author ajlane
+ * @author vanem
  */
-public class CropsControlException {
+public class CropsControlException extends Exception {
     
+    public CropsControlException() {
+    }
+
+    public CropsControlException(String message) {
+        super(message);
+    }
 }
