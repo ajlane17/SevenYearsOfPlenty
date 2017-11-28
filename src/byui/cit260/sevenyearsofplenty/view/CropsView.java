@@ -6,6 +6,7 @@
 package byui.cit260.sevenyearsofplenty.view;
 
 import byui.cit260.sevenyearsofplenty.control.CropsControl;
+import byui.cit260.sevenyearsofplenty.exceptions.CropsControlException;
 import byui.cit260.sevenyearsofplenty.control.GameControl;
 import byui.cit260.sevenyearsofplenty.control.MapControl;
 import byui.cit260.sevenyearsofplenty.model.Crops;
@@ -108,7 +109,8 @@ public class CropsView {
     public static void sellLandView() {
         int toSell = 0;
         int price = CropsControl.calcLandCost();
-
+        Game theGame = SevenYearsOfPlenty.getGame();
+        boolean paramsNotOkay = false;
         int wheat = theGame.getCrops().getWheatInStore(); 
         int population = theGame.getCrops().getPopulation();
         int owned = theGame.getCrops().getAcres();
@@ -116,20 +118,18 @@ public class CropsView {
        {
            System.out.print("\nHow many acres of land do you wish to sell? ");      
            toSell = keyboard.nextInt();
-
-           if(toSell < 0)
-           {
-               System.out.println("I am sorry master, I cannot do this.");
-               System.out.println("You cannot sell a negative amount of land.");
-           }
-           else if(toSell > owned)
-           {
-               System.out.println("I am sorry master, I cannot do this.");
-               System.out.println("You don't have enough acres to sell.");
-           }
-            
-        } while(toSell < 0 || toSell > owned) ;
-        CropsControl.sellLand(price, toSell, theGame.getCrops());        
+           try
+            {               
+                CropsControl.sellLand(price, toSell, theGame.getCrops());
+            }
+           catch(CropsControlException e)
+            {
+             System.out.println("I am sorry master, I cannot do this.");
+             System.out.println(e.getMessage());
+             paramsNotOkay = true;
+            }
+      } while(paramsNotOkay);
+           
     }
     
     public static void feedPeopleView() throws InterruptedException {
