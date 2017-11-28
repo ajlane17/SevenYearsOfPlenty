@@ -14,7 +14,7 @@ import byui.cit260.sevenyearsofplenty.model.PlayerMap;
  * @author ajlane
  */
 public class MapControl {
-    
+
     private static String[][] locationInfo = {
         {"Pharoah's Court", "Could be the main menu"},
         {"Pharoah's Granary", "Provides inventory and supplies"},
@@ -47,12 +47,12 @@ public class MapControl {
         {"Captain of the Military", "Can you take care of the bandits?"},
         {"Pest Control Office", "What about these rats?"}
     };
-    
+
     public static void createLocations(PlayerMap map, int rows, int columns) {
         Location[][] locations = new Location[rows][columns];
         int symbol = 1;
         int n = 0;
-        
+
         for (int i = 0; i < locations.length; i++) {
             for (int j = 0; j < locations[i].length; j++) {
                 locations[i][j] = new Location();
@@ -65,24 +65,24 @@ public class MapControl {
                 n++;
             }
         }
-        
+
         map.setLocations(locations);
         map.setCurrLocationX(0);
         map.setCurrLocationY(0);
         map.setRowCount(rows);
         map.setColCount(columns);
     }
-    
-    public static void moveToLocation(PlayerMap map, int row, int column) 
-    throws MapControlException {
+
+    public static void moveToLocation(PlayerMap map, int row, int column)
+            throws MapControlException {
         int rowCount = map.getRowCount();
         int colCount = map.getColCount();
-        
+
         if (row < 0 || row >= rowCount || column < 0 || column >= colCount) {
             throw new MapControlException("Can't move to location " + row + ","
-            + column + " becuase that location does not exist.");
+                    + column + " becuase that location does not exist.");
         }
-        
+
         map.setCurrLocationX(row);
         map.setCurrLocationY(column);
         Location[][] location = map.getLocations();
@@ -91,5 +91,5 @@ public class MapControl {
         System.out.format("\nLocation: %s", name);
         System.out.format("\nDescription: %s", description);
     }
-    
+
 }
