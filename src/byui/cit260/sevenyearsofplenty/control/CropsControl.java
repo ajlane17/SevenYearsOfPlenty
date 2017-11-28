@@ -5,6 +5,7 @@
  */
 package byui.cit260.sevenyearsofplenty.control;
 
+import byui.cit260.sevenyearsofplenty.exceptions.CropsControlException;
 import byui.cit260.sevenyearsofplenty.model.Crops;
 import static java.lang.Math.round;
 import java.util.concurrent.ThreadLocalRandom;
@@ -70,12 +71,13 @@ public class CropsControl {
     }
     
     public static int sellLand(int landPrice, int acresToSell, 
-            Crops theCropsObj){ 
+            Crops theCropsObj)
+       throws CropsControlException { 
         int wheatInStore = theCropsObj.getWheatInStore(); 
         int acresOwned = theCropsObj.getAcres(); 
          
         if(acresToSell < 0 || acresToSell > acresOwned){ 
-            return -1; 
+            throw new CropsControlException("A negative value was input");
         } else { 
             acresOwned = acresOwned - acresToSell; 
             theCropsObj.setAcres(acresOwned); 
@@ -179,5 +181,9 @@ public class CropsControl {
     
     public static int calcLandCost() {
         return 10;
+    }
+
+    public static void sellLand(Crops crops) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
  }
