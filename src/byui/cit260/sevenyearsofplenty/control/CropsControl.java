@@ -41,14 +41,19 @@ public class CropsControl {
     }
 
     public static int buyLand(int landPrice, int acresToBuy,
-            Crops theCropsObj) {
+            Crops theCropsObj) throws CropsControlException {
 
         int wheatInStore = theCropsObj.getWheatInStore();
         int acresOwned = theCropsObj.getAcres();
 
-        if (acresToBuy < 0 || acresToBuy * landPrice > wheatInStore) {
-            return -1;
-        } else {
+        if (acresToBuy < 0 ) {
+             throw new CropsControlException("You must choose a valid value.");
+        }
+        else if (acresToBuy * landPrice > wheatInStore){
+            throw new CropsControlException("You have to have more wheat for"
+                    + "this purchase.");
+        }
+        else {
             acresOwned = acresOwned + acresToBuy;
             theCropsObj.setAcres(acresOwned);
 
@@ -137,17 +142,29 @@ public class CropsControl {
     //reqNutrition is how much each Member of the Population needs each year
     //to be sustained.  
     public static int feedPeople(int reqNutrition, int feedAmount,
-            Crops theCropsObj) {
+            Crops theCropsObj) throws CropsControlException {
         int wheatInStore = theCropsObj.getWheatInStore();
         int currPopulation = theCropsObj.getPopulation();
         double productivity;
         theCropsObj.setFoodSupplied(feedAmount);
 
-        if (feedAmount <= 0 || wheatInStore <= 0 || currPopulation <= 0
-                || reqNutrition <= 0 || reqNutrition > feedAmount
-                || feedAmount > wheatInStore) {
-            return -1;
-        } else {
+        if (feedAmount <= 0){ 
+             throw new CropsControlException("You should enter a value greater"
+                     + "than zero.");
+        }
+        else if (wheatInStore <= 0){
+            throw new CropsControlException("You have no wheat in store.");
+        }
+        else if (currPopulation <= 0){
+            throw new CropsControlException("You need a Population to feed.");
+        }
+        else if (feedAmount > wheatInStore) {
+            throw new CropsControlException(
+                  "You cannot run faster than You have strength, and likewise,"
+                  + "\n You cannot feed what You do not have.  You should try "
+                  + "\nto enter an amount to feed the People that You have.");
+        } 
+        else {
             theCropsObj.setWheatInStore(wheatInStore -= feedAmount);
             int fedPopulation = feedAmount / reqNutrition;
 
