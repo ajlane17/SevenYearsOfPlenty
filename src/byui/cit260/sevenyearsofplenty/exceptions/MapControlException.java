@@ -7,11 +7,25 @@ package byui.cit260.sevenyearsofplenty.exceptions;
 
 /**
  *
- * @author ajlane
+ * @Author AjLane, Dennis, Vanessa 
+ * 
  */
 public class MapControlException extends Exception {
 
     public MapControlException() {
+    }
+
+    public MapControlException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public MapControlException(Throwable cause) {
+        super(cause);
+    }
+
+    public MapControlException(String message, Throwable cause, boolean 
+            enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
     }
 
     public MapControlException(String message) {
