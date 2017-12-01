@@ -6,7 +6,6 @@
 package byui.cit260.sevenyearsofplenty.view;
 
 import byui.cit260.sevenyearsofplenty.control.CropsControl;
-import byui.cit260.sevenyearsofplenty.exceptions.CropsControlException;
 import byui.cit260.sevenyearsofplenty.control.GameControl;
 import byui.cit260.sevenyearsofplenty.exceptions.CropsControlException;
 import byui.cit260.sevenyearsofplenty.model.Crops;
@@ -94,7 +93,16 @@ public class CropsView {
                         + "much land.");
             }
         } while (toBuy < 0 || toBuy * price > wheat);
-        CropsControl.buyLand(price, toBuy, theGame.getCrops());
+
+        try
+            {               
+                CropsControl.buyLand(price, toBuy, theGame.getCrops());
+            }
+           catch(CropsControlException e)
+            {
+             System.out.println("I am sorry master, I cannot do this.");
+             System.out.println(e.getMessage());
+            }
     }
 
     public static void sellLandView() {
@@ -147,8 +155,14 @@ public class CropsView {
             TimeUnit.SECONDS.sleep(1);
             switch (letter) {
                 case 'y':
-                    CropsControl.feedPeople(reqNutrition, bushels, theGame.getCrops());
-                    int testPopulation = theGame.getCrops().getPopulation();
+                    try {
+                        CropsControl.feedPeople(reqNutrition, bushels, theGame.getCrops());
+                    } catch (CropsControlException e) {
+                        System.out.println("I am sorry master, I cannot do this.");
+                        System.out.println(e.getMessage());
+                    }
+                        
+                        int testPopulation = theGame.getCrops().getPopulation();
                     System.out.println("the Population is : " + testPopulation + "after"
                             + "calling the feedPeople method.");
                     int theStarved = theGame.getCrops().getStarvedPeople();

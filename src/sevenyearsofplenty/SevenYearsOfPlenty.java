@@ -8,57 +8,64 @@ package sevenyearsofplenty;
 import byui.cit260.sevenyearsofplenty.model.Game;
 import byui.cit260.sevenyearsofplenty.model.Player;
 import byui.cit260.sevenyearsofplenty.view.MainMenuView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author aj
  */
 public class SevenYearsOfPlenty {
-    
+
     private static Game theGame = new Game();
     private static Player thePlayer = new Player();
 
-    private static printWriter outFile = null;
-    private static bufferedReader inFile = null;
+    private static PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
 
-  
+    private static PrintWriter logFile = null;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+
         try {
+            SevenYearsOfPlenty.inFile = 
+                    new BufferedReader(new InputStreamReader(System.in));
+            
+            SevenYearsOfPlenty.outFile = new PrintWriter(System.out, true);
+
+            String filePath = "log.txt";
+            SevenYearsOfPlenty.logFile = new PrintWriter(filePath);
+            
             MainMenuView.onStartupView();
-        } catch (Throwable te) {
-            System.out.println(te.getMessage());
-            te.printStackTrace();
-            MainMenuView.onStartupView();          
+            
+            return;
+        } catch (Throwable e) {
+            System.out.println("exception: " + e.toString()
+                    + "\nCause: " + e.getCause()
+                    + "\nMessage: " + e.getMessage());
+            e.printStackTrace();;
+        } finally {
+            try {
+                if (SevenYearsOfPlenty.inFile != null)
+                    SevenYearsOfPlenty.inFile.close();
+                
+                if (SevenYearsOfPlenty.outFile != null)
+                    SevenYearsOfPlenty.outFile.close();
+                
+                if (SevenYearsOfPlenty.logFile != null)
+                    SevenYearsOfPlenty.logFile.close();
+            } catch (IOException ex) {
+                System.out.println("Error closing files");
+            }
+            
         }
     }
-    
-       try {
-        SevenYearsOfPlenty.inFile = new bufferedReader
-        (new inputStreamReader(System.in));
-        SevenYearsOfPlenty.outFile = new printWriter(System.out, true);
-        
-        StartProgramView startProgramView = new StartProgramView();
-        startProgramView.display();
-        return;
-    } catch (throwable e) {
-        System.out.println("exception: " +e.toString() +
-                           "\nCause: " + e.getCause() +
-                           "\nMessage: " + e.getMessage());
-                    e.printStacktrace();;   
-    } finally {
-    
-        try {
-        SevenYearsOfPlenty.inFile.close();
-        SevenYearsOfPlenty.outFile.close();
-        } catch (IOException ex){
-         Logger.getlogger(SevenYearsOfPlenty.class.getName()).log(Level.SEVERE);
-        }
-        }
-        
 
     public static Game getGame() {
         return theGame;
@@ -75,22 +82,29 @@ public class SevenYearsOfPlenty {
     public static void setPlayer(Player _thePlayer) {
         thePlayer = _thePlayer;
     }
-    
-    public static printWriter getOutFile() {
+
+    public static PrintWriter getOutFile() {
         return outFile;
     }
 
-    public static void setOutFile(printWriter outFile) {
+    public static void setOutFile(PrintWriter outFile) {
         SevenYearsOfPlenty.outFile = outFile;
     }
-    
-    public static bufferedReader getInFile() {
+
+    public static BufferedReader getInFile() {
         return inFile;
     }
-       
-    public static void setInFile(bufferedReader inFile) {
+
+    public static void setInFile(BufferedReader inFile) {
         SevenYearsOfPlenty.inFile = inFile;
     }
+    
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+    
+    public static void setLogFile(PrintWriter logFile) {
+        SevenYearsOfPlenty.logFile = logFile;
+    }
 
- 
 }
