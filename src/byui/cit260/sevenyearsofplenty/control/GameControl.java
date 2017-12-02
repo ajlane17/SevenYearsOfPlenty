@@ -5,10 +5,15 @@
  */
 package byui.cit260.sevenyearsofplenty.control;
 
+import byui.cit260.sevenyearsofplenty.exceptions.GameControlException;
 import byui.cit260.sevenyearsofplenty.model.Crops;
 import byui.cit260.sevenyearsofplenty.model.Game;
 import byui.cit260.sevenyearsofplenty.model.Player;
 import byui.cit260.sevenyearsofplenty.model.PlayerMap;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import sevenyearsofplenty.SevenYearsOfPlenty;
 
 /**
@@ -54,6 +59,33 @@ public class GameControl {
         thePlayerMap.setColCount(columns);
         MapControl.createLocations(thePlayerMap, rows, columns);
         theGame.setPlayerMap(thePlayerMap);
+    }
+    
+    public static void saveGame(String filePath) 
+        throws GameControlException {
+        try(FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream(fops);
+            
+            output.writeObject(SevenYearsOfPlenty.getGame());
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+    }
+    
+    public static void getSavedGame(String filePath)
+                throws GameControlException {
+        
+        Game game = null;
+        
+        try(FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+            
+            game = (Game) input.readObject();
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+        SevenYearsOfPlenty.setGame(game);
     }
     
 }
