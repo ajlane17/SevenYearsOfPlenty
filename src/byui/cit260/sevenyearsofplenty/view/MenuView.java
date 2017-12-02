@@ -5,7 +5,9 @@
  */
 package byui.cit260.sevenyearsofplenty.view;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.PrintWriter;
+import sevenyearsofplenty.SevenYearsOfPlenty;
 
 /**
  *
@@ -16,13 +18,16 @@ public abstract class MenuView implements MenuViewInterface {
     protected String displayMessage;
     protected int max;
     
+    protected final BufferedReader keyboard = SevenYearsOfPlenty.getInFile();
+    protected final PrintWriter console = SevenYearsOfPlenty.getOutFile();
+    
     public MenuView() {
         
     }
     
-    public MenuView(String message, int max) {
-        this.displayMessage = message;
-        this.max = max;
+    public MenuView(String _message, int _max) {
+        displayMessage = _message;
+        max = _max;
     }
     
     @Override
@@ -31,10 +36,10 @@ public abstract class MenuView implements MenuViewInterface {
         int option;
         do
         {
-            System.out.println(displayMessage);
-            option = getMenuOption();
+            console.println(this.displayMessage);
+            option = this.getMenuOption();
             if (option != max) {
-                doAction(option);
+                this.doAction(option);
             } else {
                 display = false;
             }
@@ -43,19 +48,22 @@ public abstract class MenuView implements MenuViewInterface {
     @Override
     public int getMenuOption()
     {
-        Scanner keyboard = new Scanner(System.in);
         
         int inputValue = 0;
         
-        do
-        {
-          System.out.print("Please enter an option:");
-          inputValue = keyboard.nextInt();
-          if(inputValue < 1 || inputValue > max)
-          {
-              System.out.println("Error: invalid option.");
-          }
-        } while(inputValue < 1 || inputValue > max);
+        try {       
+            do
+            {
+              console.println("Please enter an option:");
+              inputValue = Integer.parseInt(keyboard.readLine());
+              if(inputValue < 1 || inputValue > max)
+              {
+                  console.println("Error: invalid option.");
+              }
+            } while(inputValue < 1 || inputValue > max);
+        } catch (Exception e) {
+            console.println("Error reading input: " + e.getMessage());
+        }
         
         return inputValue;
     }

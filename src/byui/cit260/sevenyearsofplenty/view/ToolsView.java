@@ -5,22 +5,28 @@
  */
 package byui.cit260.sevenyearsofplenty.view;
 
+import java.io.PrintWriter;
+import sevenyearsofplenty.SevenYearsOfPlenty;
+
 /**
  *
  * @author vmarcos
  */
 public class ToolsView {
+    
+    protected static final PrintWriter console = SevenYearsOfPlenty.getOutFile();
+    
      public static void displayTools () {
          String[] tools = {"1 - Shovel","2 - Hoe","3 - Rake","4 - Pruning shears",
         "5 - Almocafre","6 - Wheelbarrow","7 - Watering can"};
          
          
-        System.out.println("##############################\n"
+        console.println("##############################\n"
                          + "# WELCOME TO TOOL MAKER SHOP #\n"
                          + "##############################\n");
         int counter = 0;
         while(counter < tools.length){
-            System.out.println(tools[counter]);
+            console.println(tools[counter]);
             counter++;
         }
          

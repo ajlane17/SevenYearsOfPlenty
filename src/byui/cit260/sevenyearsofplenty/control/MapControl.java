@@ -8,12 +8,17 @@ package byui.cit260.sevenyearsofplenty.control;
 import byui.cit260.sevenyearsofplenty.exceptions.MapControlException;
 import byui.cit260.sevenyearsofplenty.model.Location;
 import byui.cit260.sevenyearsofplenty.model.PlayerMap;
+import java.io.PrintWriter;
+import sevenyearsofplenty.SevenYearsOfPlenty;
+
 
 /**
  *
  * @author ajlane
  */
 public class MapControl {
+    
+    protected static final PrintWriter console = SevenYearsOfPlenty.getOutFile();
 
     private static String[][] locationInfo = {
         {"Pharoah's Court", "Could be the main menu"},
@@ -88,8 +93,8 @@ public class MapControl {
         Location[][] location = map.getLocations();
         String name = location[row][column].getName();
         String description = location[row][column].getDescription();
-        System.out.format("\nLocation: %s", name);
-        System.out.format("\nDescription: %s", description);
+        console.format("\nLocation: %s", name);
+        console.format("\nDescription: %s", description);
     }
 
 }

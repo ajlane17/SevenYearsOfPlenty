@@ -5,11 +5,16 @@
  */
 package byui.cit260.sevenyearsofplenty.view;
 
+import java.io.PrintWriter;
+import sevenyearsofplenty.SevenYearsOfPlenty;
+
 /**
  *
  * @author ajlans
  */
 public class MainMenuView extends MenuView {
+    
+    protected static final PrintWriter console = SevenYearsOfPlenty.getOutFile();
     
     public MainMenuView() {        
         super("\n\n\nMAIN MENU\n"
@@ -42,7 +47,7 @@ public class MainMenuView extends MenuView {
 
     public static void onStartupView() {
         
-        System.out.println("                       WELCOME TO PHARAOH'S COURT\n"
+        console.println("                       WELCOME TO PHARAOH'S COURT\n"
                 + "You  have been summoned here to assume your  new  role as "
                 + "Agricultural Overseer.\n"
                 + "You  report  directly  to  Joseph, Pharaoh’s  Vizier. Your "

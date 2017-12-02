@@ -6,12 +6,17 @@
 package byui.cit260.sevenyearsofplenty.view;
 
 import java.lang.reflect.Array;
+import java.io.PrintWriter;
+import sevenyearsofplenty.SevenYearsOfPlenty;
 
 /**
  *
  * @author ajlan
  */
 public class LivestockView {
+    
+    protected static final PrintWriter console = SevenYearsOfPlenty.getOutFile();
+    
     // Animals include name, count, and number of feet/hooves
     private static final String COWS_OBJ[] = {"Cows", "30", "4"};
     private static final String GOATS_OBJ[] = {"Goats", "15", "4"};
@@ -46,7 +51,7 @@ public class LivestockView {
         int count = 0;
         int feet = 0;
         
-        System.out.println("\n#############################\n"
+        console.println("\n#############################\n"
                          + "#     Current Livestock     #\n"
                          + "#############################");
     
@@ -54,10 +59,10 @@ public class LivestockView {
             animal = livestock.getLivestockValue();
             count = Integer.parseInt(animal[1]);
             feet = Integer.parseInt(animal[2]);
-            System.out.format(rowFormat, animal[0], animal[1]);
+            console.format(rowFormat, animal[0], animal[1]);
             feetOnTheGround = feetOnTheGround + (count * feet);
         }
         
-        System.out.format("\nTotal feet on the ground: %d", feetOnTheGround);
+        console.format("\nTotal feet on the ground: %d", feetOnTheGround);
     }
 }

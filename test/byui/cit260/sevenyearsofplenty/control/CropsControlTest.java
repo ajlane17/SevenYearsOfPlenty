@@ -7,17 +7,22 @@ package byui.cit260.sevenyearsofplenty.control;
 
 import byui.cit260.sevenyearsofplenty.model.Crops;
 import byui.cit260.sevenyearsofplenty.view.CropsView;
+import java.io.PrintWriter;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.AfterClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.BeforeClass;
+import sevenyearsofplenty.SevenYearsOfPlenty;
+
 
 /**
  *
  * @author ajlan
  */
 public class CropsControlTest {
+    
+    protected static final PrintWriter console = SevenYearsOfPlenty.getOutFile();
 
     private Object theCropsObj;
 
@@ -53,7 +58,7 @@ public class CropsControlTest {
         int pharoahsShareResult;
         
         // Test Case #1 
-        System.out.println("payPharoah #1");
+        console.println("payPharoah #1");
         payPharoahCropsObj.setWheatInStore(1);
         wheatInStoreExpResult = 1;
         CropsControl.payPharoah(payPharoahCropsObj);
@@ -61,7 +66,7 @@ public class CropsControlTest {
         assertEquals(wheatInStoreExpResult, wheatInStoreResult);
         
         // Test Case #2        
-        System.out.println("payPharoah #2");
+        console.println("payPharoah #2");
         payPharoahCropsObj.setWheatInStore(234);
         pharoahsShareLow = 18;
         pharoahsShareHigh = 23;
@@ -80,7 +85,7 @@ public class CropsControlTest {
                 <= wheatInStoreHigh);
         
         // Test Case #3
-        System.out.println("payPharoah #3");
+        console.println("payPharoah #3");
         payPharoahCropsObj.setWheatInStore(1000);
         pharoahsShareLow = 80;
         pharoahsShareHigh = 100;
@@ -99,7 +104,7 @@ public class CropsControlTest {
                 <= wheatInStoreHigh);
     
         // Test Case #4
-        System.out.println("payPharoah #4");
+        console.println("payPharoah #4");
         payPharoahCropsObj.setWheatInStore(-100);
         try {
             CropsControl.payPharoah(payPharoahCropsObj);
@@ -108,7 +113,7 @@ public class CropsControlTest {
         }
       
         // Test Case #5
-        System.out.println("payPharoah #5");
+        console.println("payPharoah #5");
         payPharoahCropsObj.setWheatInStore(0);
         wheatInStoreExpResult = 0;
         CropsControl.payPharoah(payPharoahCropsObj);
@@ -129,7 +134,7 @@ public class CropsControlTest {
     int result;
 
     // Test Case #1
-    System.out.println("buyLand #1");
+    console.println("buyLand #1");
     landPrice = 20;
     acresToBuy = 10;
     testBuyLandCropsObj.setWheatInStore(2800);
@@ -138,7 +143,7 @@ public class CropsControlTest {
     assertEquals(expResult, result);
 
     // Test Case #2
-    System.out.println("buyLand #2");
+    console.println("buyLand #2");
     landPrice = 20;
     acresToBuy = -5;
     testBuyLandCropsObj.setWheatInStore(2800);
@@ -147,7 +152,7 @@ public class CropsControlTest {
     assertEquals(expResult, result);
 
     // Test Case #3
-    System.out.println("buyLand #3");
+    console.println("buyLand #3");
     landPrice = 20;
     acresToBuy = 200;
     testBuyLandCropsObj.setWheatInStore(2800);
@@ -156,7 +161,7 @@ public class CropsControlTest {
     assertEquals(expResult, result);
 
     // Test Case #4
-    System.out.println("buyLand #4");
+    console.println("buyLand #4");
     landPrice = 10;
     acresToBuy = 200;
     testBuyLandCropsObj.setWheatInStore(2000);
@@ -165,7 +170,7 @@ public class CropsControlTest {
     assertEquals(expResult, result);
 
     // Test Case #5
-    System.out.println("buyLand #5");
+    console.println("buyLand #5");
     landPrice = 10;
     acresToBuy = 0;
     testBuyLandCropsObj.setWheatInStore(2000);
@@ -188,7 +193,7 @@ public class CropsControlTest {
         int result;
         
         // Test Case #1
-        System.out.println("PlantCrops #1");
+        console.println("PlantCrops #1");
         cropsToPlant = 234;
         wheatInStore = 500;
         acres = 440;
@@ -200,7 +205,7 @@ public class CropsControlTest {
         assertEquals(expResult, result);
         
         // Test Case #2
-        System.out.println("PlantCrops #2");
+        console.println("PlantCrops #2");
         cropsToPlant = 51;
         wheatInStore = 50;
         acres = 440;
@@ -213,7 +218,7 @@ public class CropsControlTest {
         }
         
         // Test Case #3
-        System.out.println("PlantCrops #3");
+        console.println("PlantCrops #3");
         cropsToPlant = 50;
         wheatInStore = 100;
         acres = 40;
@@ -226,7 +231,7 @@ public class CropsControlTest {
         }
         
         // Test Case #4
-        System.out.println("PlantCrops #4");
+        console.println("PlantCrops #4");
         cropsToPlant = 20;
         wheatInStore = 20;
         acres = 100;
@@ -238,7 +243,7 @@ public class CropsControlTest {
         assertEquals(expResult, result);
         
         // Test Case #5
-        System.out.println("PlantCrops #5");
+        console.println("PlantCrops #5");
         cropsToPlant = 20;
         wheatInStore = 100;
         acres = 20;
@@ -250,7 +255,7 @@ public class CropsControlTest {
         assertEquals(expResult, result);
         
         // Test Case #6
-        System.out.println("PlantCrops #6");
+        console.println("PlantCrops #6");
         cropsToPlant = 0;
         wheatInStore = 100;
         acres = 20;
@@ -275,7 +280,7 @@ public class CropsControlTest {
         int result; 
          
         // Test Case #1 
-        System.out.println("sellLand #1"); 
+        console.println("sellLand #1"); 
         landPrice = 20; 
         acresToSell = 20; 
         testSellLandCropsObj.setWheatInStore(2000); 
@@ -285,7 +290,7 @@ public class CropsControlTest {
         assertEquals(expResult, result); 
          
         // Test Case #2 
-        System.out.println("sellLand #2"); 
+        console.println("sellLand #2"); 
         landPrice = 20; 
         acresToSell = -5; 
         testSellLandCropsObj.setWheatInStore(2000); 
@@ -295,7 +300,7 @@ public class CropsControlTest {
         assertEquals(expResult, result);         
        
         // Test Case #3 
-        System.out.println("sellLand #3"); 
+        console.println("sellLand #3"); 
         landPrice = 20; 
         acresToSell = 250; 
         testSellLandCropsObj.setWheatInStore(2000); 
@@ -305,7 +310,7 @@ public class CropsControlTest {
         assertEquals(expResult, result); 
          
         // Test Case #4 
-        System.out.println("sellLand #4"); 
+        console.println("sellLand #4"); 
         landPrice = 20; 
         acresToSell = 0; 
         testSellLandCropsObj.setWheatInStore(2000); 
@@ -315,7 +320,7 @@ public class CropsControlTest {
         assertEquals(expResult, result); 
          
         // Test Case #5 
-        System.out.println("sellLand #5"); 
+        console.println("sellLand #5"); 
         landPrice = 20; 
         acresToSell = 200; 
         testSellLandCropsObj.setWheatInStore(2000); 
@@ -336,32 +341,32 @@ public class CropsControlTest {
         int result; 
         
         // Test Case #1                 
-        System.out.println("harvestCrops #1"); 
+        console.println("harvestCrops #1"); 
         ratTax = 1;
         expResult = 0; 
         result = testHarvestCropsObj.getHarvest(); 
         assertEquals(expResult, result); 
         
         // Test Case #2
-        System.out.println("harvestCrops #2"); 
+        console.println("harvestCrops #2"); 
         ratTax = 2;
         result = testHarvestCropsObj.getHarvest(); 
         assertEquals(expResult, result); 
         
         // Test Case #3
-        System.out.println("harvestCrops #2"); 
+        console.println("harvestCrops #2"); 
         ratTax = 3;
         result = testHarvestCropsObj.getHarvest(); 
         assertEquals(expResult, result); 
         
         // Test Case #4
-        System.out.println("harvestCrops #2"); 
+        console.println("harvestCrops #2"); 
         ratTax = 4;
         result = testHarvestCropsObj.getHarvest(); 
         assertEquals(expResult, result); 
         
         // Test Case #5 
-        System.out.println("harvestCrops #2"); 
+        console.println("harvestCrops #2"); 
         ratTax = 5;
         result = testHarvestCropsObj.getHarvest(); 
         assertEquals(expResult, result); 
@@ -377,25 +382,25 @@ public class CropsControlTest {
         int expResult;
 
         // test case #1
-        System.out.println("feedPeople #1");
+        console.println("feedPeople #1");
         reqNutrition = 10; //this is per Person to live for the year
         feedAmount = 1000; //this is how much will be distributed
         theCropsObj.setWheatInStore(1050);
         theCropsObj.setPopulation(101);
-        System.out.println("wheatInStore was : " + 
+        console.println("wheatInStore was : " + 
                 theCropsObj.getWheatInStore());
-        System.out.println("the Population was : " + 
+        console.println("the Population was : " + 
                 theCropsObj.getPopulation());
         expResult = 100;
         result = CropsControl.feedPeople(reqNutrition, feedAmount, theCropsObj);
         assertEquals(expResult, result);
         int newPopulation = theCropsObj.getPopulation();
         int newWheatInStore = theCropsObj.getWheatInStore();
-        System.out.println("           wheatInStore: " + newWheatInStore);
-        System.out.println("              fedPeople: " + result);
-        System.out.println("          starvedPeople: " + 
+        console.println("           wheatInStore: " + newWheatInStore);
+        console.println("              fedPeople: " + result);
+        console.println("          starvedPeople: " + 
                 theCropsObj.getStarvedPeople());
-        System.out.println("         new Population: " + newPopulation);
+        console.println("         new Population: " + newPopulation);
     }
 //------------------------------------------------------------------------------    
 //------------------------------------------------------------------------------    
@@ -417,10 +422,10 @@ public class CropsControlTest {
        
   // Population = (int) round((rate*yield) + productivity) * Population;
         
-        System.out.println("#1 growPopulation");
+        console.println("#1 growPopulation");
         int result = CropsControl.growPopulation(theCropsObj);
-        System.out.println("growPopulation results are :" + result);
-        System.out.println("the expected results are: 30750");
+        console.println("growPopulation results are :" + result);
+        console.println("the expected results are: 30750");
         
 //------------------------------------------------------------------------------        
         theCropsObj.setGrowthRate(.05);
@@ -428,15 +433,15 @@ public class CropsControlTest {
         theCropsObj.setProductivity(1.11);
         theCropsObj.setPopulation(25000);
    
-//        System.out.println(theCropsObj.getGrowthRate());
-//        System.out.println(theCropsObj.getCropYield());       
-//        System.out.println(theCropsObj.getProductivity());        
-//        System.out.println(theCropsObj.getPopulation());        
+//        console.println(theCropsObj.getGrowthRate());
+//        console.println(theCropsObj.getCropYield());       
+//        console.println(theCropsObj.getProductivity());        
+//        console.println(theCropsObj.getPopulation());        
 //        
-        System.out.println("#2 growPopulation");
+        console.println("#2 growPopulation");
         int thisResult = CropsControl.growPopulation(theCropsObj);
-        System.out.println("growPopulation results are :" + thisResult);
-        System.out.println("the expected results are: 34000");
+        console.println("growPopulation results are :" + thisResult);
+        console.println("the expected results are: 34000");
         
     }
 }

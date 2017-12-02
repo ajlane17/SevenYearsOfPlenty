@@ -6,12 +6,16 @@
 package byui.cit260.sevenyearsofplenty.view;
 
 import java.util.Scanner;
+import java.io.PrintWriter;
+import sevenyearsofplenty.SevenYearsOfPlenty;
 
 /**
  *
  * @author ajlan
  */
 public class HelpMenuView extends MenuView {
+    
+    protected static final PrintWriter console = SevenYearsOfPlenty.getOutFile();
     
     public HelpMenuView() {
     super("\n\n\nHELP MENU\n"
@@ -44,7 +48,7 @@ public class HelpMenuView extends MenuView {
     }
 
     public static void helpJoseph() {
-        System.out.println("Joseph help goes here");
+        console.println("Joseph help goes here");
     }
     
 }

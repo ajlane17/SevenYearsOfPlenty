@@ -7,13 +7,12 @@ package sevenyearsofplenty;
 
 import byui.cit260.sevenyearsofplenty.model.Game;
 import byui.cit260.sevenyearsofplenty.model.Player;
+import byui.cit260.sevenyearsofplenty.view.ErrorView;
 import byui.cit260.sevenyearsofplenty.view.MainMenuView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -28,42 +27,46 @@ public class SevenYearsOfPlenty {
     private static BufferedReader inFile = null;
 
     private static PrintWriter logFile = null;
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
         try {
-            SevenYearsOfPlenty.inFile = 
-                    new BufferedReader(new InputStreamReader(System.in));
-            
+            SevenYearsOfPlenty.inFile
+                    = new BufferedReader(new InputStreamReader(System.in));
+
             SevenYearsOfPlenty.outFile = new PrintWriter(System.out, true);
 
             String filePath = "log.txt";
             SevenYearsOfPlenty.logFile = new PrintWriter(filePath);
-            
+
             MainMenuView.onStartupView();
-            
+
             return;
         } catch (Throwable e) {
-            System.out.println("exception: " + e.toString()
+            ErrorView.display("ClassName", "exception: " + e.toString()
                     + "\nCause: " + e.getCause()
                     + "\nMessage: " + e.getMessage());
             e.printStackTrace();;
         } finally {
             try {
-                if (SevenYearsOfPlenty.inFile != null)
+                if (SevenYearsOfPlenty.inFile != null) {
                     SevenYearsOfPlenty.inFile.close();
-                
-                if (SevenYearsOfPlenty.outFile != null)
+                }
+
+                if (SevenYearsOfPlenty.outFile != null) {
                     SevenYearsOfPlenty.outFile.close();
-                
-                if (SevenYearsOfPlenty.logFile != null)
+                }
+
+                if (SevenYearsOfPlenty.logFile != null) {
                     SevenYearsOfPlenty.logFile.close();
+                }
             } catch (IOException ex) {
-                System.out.println("Error closing files");
+                ErrorView.display("className","Error closing files");
             }
-            
+
         }
     }
 
@@ -98,11 +101,11 @@ public class SevenYearsOfPlenty {
     public static void setInFile(BufferedReader inFile) {
         SevenYearsOfPlenty.inFile = inFile;
     }
-    
+
     public static PrintWriter getLogFile() {
         return logFile;
     }
-    
+
     public static void setLogFile(PrintWriter logFile) {
         SevenYearsOfPlenty.logFile = logFile;
     }
