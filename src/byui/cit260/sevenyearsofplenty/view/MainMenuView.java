@@ -104,6 +104,7 @@ public class MainMenuView extends MenuView {
         try {
             filePath = keyboard.readLine();
             filePath = filePath.trim();
+            GameControl.getSavedGame(filePath);
         } catch (Exception e) {
             ErrorView.display("saveGame", e.getMessage());
         }
