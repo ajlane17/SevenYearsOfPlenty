@@ -35,14 +35,14 @@ public class MainMenuView extends MenuView {
                 CropsView.displayStartProgramView();
                 break;
             case 2:
-                saveGame();
+                startSavedGame();
                 break;
             case 3:
                 HelpMenuView helpMenuView = new HelpMenuView();
                 helpMenuView.display();
                 break;
             case 4:
-                startSavedGame();
+                saveGame();
                 break;
             case 5:
                 MainMenuView mainMenuView = new MainMenuView();
@@ -91,11 +91,6 @@ public class MainMenuView extends MenuView {
         try {
             filePath = keyboard.readLine();
             filePath = filePath.trim();
-        } catch (Exception e) {
-            ErrorView.display("saveGame", e.getMessage());
-        }
-
-        try {
             GameControl.saveGame(filePath);
         } catch (Exception e) {
             ErrorView.display("saveGame", e.getMessage());

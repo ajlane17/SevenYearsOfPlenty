@@ -5,6 +5,7 @@
  */
 package byui.cit260.sevenyearsofplenty.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ import java.util.Objects;
  *
  * @author Adrian, Dennis, Vanessa
  */
-public class Game {
+public class Game implements Serializable {
 
     // Define instance variables
     private Crops crops;
