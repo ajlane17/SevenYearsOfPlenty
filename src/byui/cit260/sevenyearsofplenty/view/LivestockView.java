@@ -5,6 +5,7 @@
  */
 package byui.cit260.sevenyearsofplenty.view;
 
+import java.io.FileWriter;
 import java.lang.reflect.Array;
 import java.io.PrintWriter;
 import sevenyearsofplenty.SevenYearsOfPlenty;
@@ -45,24 +46,42 @@ public class LivestockView {
     
     public static void showLivestockInventory() {
         
-        String rowFormat = "\nAnimal: %-8s Count: %-3s";
+        StringBuilder report = new StringBuilder();
+        
+        String rowFormat = "Animal: %-8s Count: %-3s\r\n";
         int feetOnTheGround = 0;
         String[] animal;
         int count = 0;
         int feet = 0;
         
-        console.println("\n#############################\n"
-                         + "#     Current Livestock     #\n"
-                         + "#############################");
-    
+        String header = "\n#############################\r\n"
+                         + "#     Current Livestock     #\r\n"
+                         + "#############################\r\n";
+        
+        report.append(header);
+        
         for (Livestock livestock : Livestock.values()) {
             animal = livestock.getLivestockValue();
             count = Integer.parseInt(animal[1]);
             feet = Integer.parseInt(animal[2]);
-            console.format(rowFormat, animal[0], animal[1]);
+            report.append(String.format(rowFormat, animal[0], animal[1]));
             feetOnTheGround = feetOnTheGround + (count * feet);
         }
         
-        console.format("\nTotal feet on the ground: %d", feetOnTheGround);
+        report.append(String.format("\r\nTotal feet on the ground: %d\r\n", feetOnTheGround));
+        
+        console.print(report);
+        
+        saveLivestockReport(report);
+        
+    }
+    
+    private static void saveLivestockReport(StringBuilder report) {
+        
+        try(PrintWriter livestockReport = new PrintWriter(new FileWriter("livestock.txt"), true)) {
+            livestockReport.print(report);
+        } catch (Exception e) {
+            ErrorView.display("livestockView", e.getMessage());
+        }
     }
 }

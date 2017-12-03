@@ -14,16 +14,16 @@ import sevenyearsofplenty.SevenYearsOfPlenty;
  */
 public class ErrorView {
     
-    private static final PrintWriter errorFile = SevenYearsOfPlenty.getOutFile();
-    private static final PrintWriter logFile = SevenYearsOfPlenty.getLogFile();
+    private static final PrintWriter ERROR_VIEW = SevenYearsOfPlenty.getOutFile();
+    private static final PrintWriter LOG_FILE = SevenYearsOfPlenty.getLogFile();
     
     public static void display(String className, String errorMessage) {
         
-        errorFile.println(
+        ERROR_VIEW.println(
             "-------------------------------------------------------------------"
           + "\n- ERROR - " + errorMessage
           + "\n-------------------------------------------------------------------");
         
-        logFile.println(className + " - " + errorMessage);
+        LOG_FILE.println(className + " - " + errorMessage);
     }
 }

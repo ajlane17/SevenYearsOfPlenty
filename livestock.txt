@@ -1,0 +1,11 @@
+
+#############################
+#     Current Livestock     #
+#############################
+Animal: Cows     Count: 30 
+Animal: Goats    Count: 15 
+Animal: Sheep    Count: 12 
+Animal: Alpacas  Count: 5  
+Animal: Chickens Count: 7  
+
+Total feet on the ground: 262
