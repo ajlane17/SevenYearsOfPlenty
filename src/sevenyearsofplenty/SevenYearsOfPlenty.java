@@ -10,6 +10,7 @@ import byui.cit260.sevenyearsofplenty.model.Player;
 import byui.cit260.sevenyearsofplenty.view.ErrorView;
 import byui.cit260.sevenyearsofplenty.view.MainMenuView;
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -40,11 +41,10 @@ public class SevenYearsOfPlenty {
             SevenYearsOfPlenty.outFile = new PrintWriter(System.out, true);
 
             String filePath = "log.txt";
-            SevenYearsOfPlenty.logFile = new PrintWriter(filePath);
+            SevenYearsOfPlenty.logFile = new PrintWriter(new FileWriter(filePath), true);
 
             MainMenuView.onStartupView();
 
-            return;
         } catch (Throwable e) {
             ErrorView.display("ClassName", "exception: " + e.toString()
                     + "\nCause: " + e.getCause()

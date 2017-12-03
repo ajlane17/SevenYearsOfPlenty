@@ -16,6 +16,7 @@ public class ErrorView {
     
     private static final PrintWriter errorFile = SevenYearsOfPlenty.getOutFile();
     private static final PrintWriter logFile = SevenYearsOfPlenty.getLogFile();
+    
     public static void display(String className, String errorMessage) {
         
         errorFile.println(
