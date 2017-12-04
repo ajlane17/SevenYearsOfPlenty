@@ -36,11 +36,13 @@ public class ToolsView {
        
         while(counter < tools.length){
             console.println(tools[counter]);
+            report.append(tools[counter]);
+            report.append("\r\n");
             counter++;
             saveToolsReport(report);
         }
         
-        report.append(tools);
+        
      }
      
      private static void saveToolsReport(StringBuilder report) {
@@ -50,7 +52,10 @@ public class ToolsView {
         } catch (Exception e) {
             ErrorView.display("toolsView", e.getMessage());
         }
+        
+        
     }
+     
 }
 
 
