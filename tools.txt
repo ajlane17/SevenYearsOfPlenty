@@ -1,3 +1,10 @@
 ##############################
 # WELCOME TO TOOL MAKER SHOP #
 ##############################
+1 - Shovel
+2 - Hoe
+3 - Rake
+4 - Pruning shears
+5 - Almocafre
+6 - Wheelbarrow
+7 - Watering can
