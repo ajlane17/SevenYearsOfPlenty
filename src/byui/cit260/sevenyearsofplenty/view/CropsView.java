@@ -25,8 +25,8 @@ public class CropsView {
     // Get references to the Game object and the Crops object
     private static Game theGame = SevenYearsOfPlenty.getGame();
 
-    protected static final BufferedReader keyboard = SevenYearsOfPlenty.getInFile();
-    protected static final PrintWriter console = SevenYearsOfPlenty.getOutFile();
+protected static final BufferedReader keyboard = SevenYearsOfPlenty.getInFile();
+protected static final PrintWriter console = SevenYearsOfPlenty.getOutFile();
 
     // The startProgramView method
     // Purpose: Start the game
@@ -70,7 +70,7 @@ public class CropsView {
                             + "2 characters");
                 }
 
-            } while (playerName.length() < 2);  // must have at least 2 characters
+            } while (playerName.length() < 2);// must have at least 2 characters
         } catch (Exception e) {
             console.println("Error reading input: " + e.getMessage());
         }
@@ -87,11 +87,13 @@ public class CropsView {
 
         try {
             do {
-                console.println("\nHow many acres of land do you wish to buy? ");
+                console.println("\nHow many acres of land do you wish "
+                        + "to buy? ");
                 toBuy = Integer.parseInt(keyboard.readLine());
                 if (toBuy < 0) {
                     console.println("I am sorry master, I cannot do this.");
-                    console.println("You cannot buy a negative amount of land.");
+                    console.println("You cannot buy a negative amount of "
+                            + "land.");
                 } else if (toBuy * price > wheat) {
                     console.println("I am sorry master, I cannot do this.");
                     console.println("You do not have enough wheat to buy this "
@@ -121,7 +123,8 @@ public class CropsView {
 
         try {
             do {
-                console.println("\nHow many acres of land do you wish to sell? ");
+                console.println("\nHow many acres of land do you wish to "
+                        + "sell? ");
                 toSell = Integer.parseInt(keyboard.readLine());
                 try {
                     CropsControl.sellLand(price, toSell, theGame.getCrops());
@@ -142,16 +145,16 @@ public class CropsView {
         int bushels = 0;
         int Population = theGame.getCrops().getPopulation();
                 TimeUnit.SECONDS.sleep(1);
-        console.println("\n\n\n# You must feed the People #\n\n\n");
+        console.println("\n\n# You must feed the People #\n\n");
                 TimeUnit.SECONDS.sleep(1);
         console.println("Your attention is required, as "
-                + "We must allocate rations for the People. \n");
+                + "We must allocate rations for the People.");
                 TimeUnit.SECONDS.sleep(1);
-        console.println("You must decide how much You will feed the People. \n"
+        console.println("You must decide how much You will feed the People."
         );
                 TimeUnit.SECONDS.sleep(1);
         console.println("You should enter a whole number for the bushels that "
-                + "will be distributed for the year. \n ");
+                + "will be distributed for the year.");
                 TimeUnit.SECONDS.sleep(1);
         console.println("please enter Your decision : ");
         try {
@@ -162,8 +165,10 @@ public class CropsView {
         boolean exit = false;
         TimeUnit.SECONDS.sleep(1);
         console.println("You have decided to feed " + bushels + " bushels to "
-                + Population + " People for this year, \nenter 'y' if You agree,"
-                + " and 'n', if You would like to re-enter Your decision : ");
+                + Population + " People for this year, \nenter 'y' if "
+                + "You agree,"
+                + " and 'n', if You would like to re-enter Your decision : "
+                + "or 'make it so' for fun");
 
         try {
             do {
@@ -175,14 +180,17 @@ public class CropsView {
                 switch (letter) {
                     case 'y':
                         try {
-                            CropsControl.feedPeople(reqNutrition, bushels, theGame.getCrops());
+                            CropsControl.feedPeople(reqNutrition, bushels, 
+                                    theGame.getCrops());
                         } catch (CropsControlException e) {
-                            console.println("I am sorry master, I cannot do this.");
+                            console.println("I am sorry master, I cannot do "
+                                    + "this.");
                             console.println(e.getMessage());
                         }
 
                         int testPopulation = theGame.getCrops().getPopulation();
-                        console.println("the Population is : " + testPopulation + "after"
+                        console.println("the Population is : " + testPopulation 
+                                + "after"
                                 + "calling the feedPeople method.");
                         int theStarved = theGame.getCrops().getStarvedPeople();
                         int fedPeople = theGame.getCrops().getFed();
@@ -191,59 +199,62 @@ public class CropsView {
                         exit = true;
                         break;
                     case 'n':
-                        console.println("You should enter a whole number of bushels "
+                        console.println("please choose another amount\n");
+                        console.println("You should enter a whole number of "
+                                + "bushels "
                                 + "to feed the People for this year.\n"
                                 + "please enter the amount here: ");
                         break;
-                    case 'm':
-                        console.println("You have made it so, far...\n"
-                                + "                  xxxXRRRMMMMMMMMMMMMMMMxxx,.\n"
-                                + "              xXXRRRRRXXXVVXVVXXXXXXXRRRRRMMMRx,\n"
-                                + "            xXRRXRVVVVVVVVVVVVVVVXXXXXRXXRRRMMMMMRx.\n"
-                                + "          xXRXXXVVVVVVVVVVVVVVVVXXXXVXXXXXXRRRRRMMMMMxx.\n"
-                                + "        xXRRXXVVVVVttVtVVVVVVVVVtVXVVVVXXXXXRRRRRRRMMMMMXx\n"
-                                + "      xXXRXXVVVVVtVttttttVtttttttttVXXXVXXXRXXRRRRRRRMMMMMMXx\n"
-                                + "     XRXRXVXXVVVVttVtttVttVttttttVVVVXXXXXXXXXRRRRRRRMMMMMMMMVx\n"
-                                + "    XRXXRXVXXVVVVtVtttttVtttttittVVVXXVXVXXXRXRRRRRMRRMMMMMMMMMX,\n"
-                                + "   XRRRMRXRXXXVVVXVVtttittttttttttVVVVXXVXXXXXXRRRRRMRMMMMMMMMMMM,\n"
-                                + "   XXXRRRRRXXXXXXVVtttttttttttttttttVtVXVXXXXXXXRRRRRMMMMMMMMMMMMM,\n"
-                                + "   XXXXRXRXRXXVXXVtVtVVttttttttttttVtttVXXXXXXXRRRRRMMMMMMMMMMMMMMMR\n"
-                                + "   VVXXXVRVVXVVXVVVtttititiitttttttttttVVXXXXXXRRRRRMRMMMMMMMMMMMMMMV\n"
-                                + "   VttVVVXRXVVXtVVVtttii|iiiiiiittttttttitXXXRRRRRRRRRRMMMMMMMMMMMMMM\n"
-                                + "   tiRVVXRVXVVVVVit|ii||iii|||||iiiiiitiitXXXXXXXXRRRRRRMMMMMMMMMMMMM\n"
-                                + "    +iVtXVttiiii|ii|+i+|||||i||||||||itiiitVXXVXXXRRRRRRRRMMMMMMRMMMX\n"
-                                + "    `+itV|++|tttt|i|+||=+i|i|iiii|iiiiiiiitiVtti+++++|itttRRRRRMVXVit\n"
-                                + "     +iXV+iVt+,tVit|+=i|||||iiiiitiiiiiiii|+| |it  ti+=++|+iVX RV  |t\n"
-                                + "     +iXtiXRXXi+Vt|i||+|++itititttttttti|iiiiitVtii:+++|+++iXRMMXXMR\n"
-                                + "     :iRtiXtiV||iVVt||||++ttittttttttttttttXXVXXRXRXXXtittt|iXRMMXRM\n"
-                                + "      :|t|iVtXV+=+Xtti+|++itiiititittttVttXXXXXXXRRRXVtVVtttttRRMMMM|\n"
-                                + "        +iiiitttt||i+++||+++|iiiiiiiiitVVVXXRXXXRRRRMXVVVVttVVVXRMMMV\n"
-                                + "         :itti|iVttt|+|++|++|||iiiiiiiittVVXRRRMMMMMMRVtitittiVXRRMMMV\n"
-                                + "           `i|iitVtXt+=||++++|++++|||+++iiiVVXVRXRRRV+=|tttttttiRRRMMM|\n"
-                                + "             i+++|+==++++++++++++++|||||||||itVVVViitt|+,,+,,=,+|itVX'\n"
-                                + "              |+++++.,||+|++++=+++++++|+|||||iitt||i||ii||||||itXt|\n"
-                                + "              t||+++,.=i+|+||+++++++++++++|i|ittiiii|iiitttttXVXRX|\n"
-                                + "              :||+++++.+++++++++|++|++++++|||iii||+:,:.-+:+|iViVXV\n"
-                                + "              iii||+++=.,+=,=,==++++++++++|||itttt|itiittXRXXXitV'\n"
-                                + "             ;tttii||++,.,,,.,,,,,=++++++++++|iittti|iiiiVXXXXXXV\n"
-                                + "            tVtttiii||++++=,,.  . ,,,=+++++++|itiiiiiii||||itttVt\n"
-                                + "           tVVttiiiii||||++++==,. ..,.,+++=++iiiiiitttttVVXXRRXXV\n"
-                                + "        ..ttVVttitttii||i|||||+|+=,.    .,,,,==+iittVVVXRRMXRRRV\n"
-                                + "...'''ittitttttitVttttiiiiii|ii|++++=+=..... ,.,,||+itiVVXXVXV\n"
-                                + "      ,|iitiiitttttttiiiii||ii||||||||+++++,.i|itVt+,,=,==.........\n"
-                                + "        ,|itiiiVtVtiii||iiiiii|||||||++||||tt|VXXRX|  ....  ..     ' ' '\n"
-                                + "          ,,i|ii||i||+|i|i|iiiiiiii||||ittRVVXRXRMX+, .  ...   .        ,\n"
-                                + "    .       .,+|++|||||ii|i|iiiitttVVttXVVXVXRRRRXt+. .....  . .      ,. .\n"
-                                + "  . .          ,,++|||||||i|iiitVVVXXXXVXXVXXRRRV+=,.....  ....  .      ..\n"
-                                + "                  .,,++|||i|iittXXXXRMViRXXXXRVt+=, ..    .......       ..\n"
-                                + "                   ,XX+.=+++iitVVXXXRXVtXXVRRV++=,..... .,, .            .\n"
-                                + "            ....       +XX+|i,,||tXRRRXVXti|+++,,. .,,. . . ...     . ....\n"
-                                + "  . .          .      ..  ..........++,,..,...,.... ..             .. ...\n"
-                                );
+case 'm':
+    console.println("You have made it so, far...\n"
++ "                  xxxXRRRMMMMMMMMMMMMMMMxxx,.\n"
++ "              xXXRRRRRXXXVVXVVXXXXXXXRRRRRMMMRx,\n"
++ "            xXRRXRVVVVVVVVVVVVVVVXXXXXRXXRRRMMMMMRx.\n"
++ "          xXRXXXVVVVVVVVVVVVVVVVXXXXVXXXXXXRRRRRMMMMMxx.\n"
++ "        xXRRXXVVVVVttVtVVVVVVVVVtVXVVVVXXXXXRRRRRRRMMMMMXx\n"
++ "      xXXRXXVVVVVtVttttttVtttttttttVXXXVXXXRXXRRRRRRRMMMMMMXx\n"
++ "     XRXRXVXXVVVVttVtttVttVttttttVVVVXXXXXXXXXRRRRRRRMMMMMMMMVx\n"
++ "    XRXXRXVXXVVVVtVtttttVtttttittVVVXXVXVXXXRXRRRRRMRRMMMMMMMMMX,\n"
++ "   XRRRMRXRXXXVVVXVVtttittttttttttVVVVXXVXXXXXXRRRRRMRMMMMMMMMMMM,\n"
++ "   XXXRRRRRXXXXXXVVtttttttttttttttttVtVXVXXXXXXXRRRRRMMMMMMMMMMMMM,\n"
++ "   XXXXRXRXRXXVXXVtVtVVttttttttttttVtttVXXXXXXXRRRRRMMMMMMMMMMMMMMMR\n"
++ "   VVXXXVRVVXVVXVVVtttititiitttttttttttVVXXXXXXRRRRRMRMMMMMMMMMMMMMMV\n"
++ "   VttVVVXRXVVXtVVVtttii|iiiiiiittttttttitXXXRRRRRRRRRRMMMMMMMMMMMMMM\n"
++ "   tiRVVXRVXVVVVVit|ii||iii|||||iiiiiitiitXXXXXXXXRRRRRRMMMMMMMMMMMMM\n"
++ "    +iVtXVttiiii|ii|+i+|||||i||||||||itiiitVXXVXXXRRRRRRRRMMMMMMRMMMX\n"
++ "    `+itV|++|tttt|i|+||=+i|i|iiii|iiiiiiiitiVtti+++++|itttRRRRRMVXVit\n"
++ "     +iXV+iVt+,tVit|+=i|||||iiiiitiiiiiiii|+| |it  ti+=++|+iVX RV  |t\n"
++ "     +iXtiXRXXi+Vt|i||+|++itititttttttti|iiiiitVtii:+++|+++iXRMMXXMR\n"
++ "     :iRtiXtiV||iVVt||||++ttittttttttttttttXXVXXRXRXXXtittt|iXRMMXRM\n"
++ "      :|t|iVtXV+=+Xtti+|++itiiititittttVttXXXXXXXRRRXVtVVtttttRRMMMM|\n"
++ "        +iiiitttt||i+++||+++|iiiiiiiiitVVVXXRXXXRRRRMXVVVVttVVVXRMMMV\n"
++ "         :itti|iVttt|+|++|++|||iiiiiiiittVVXRRRMMMMMMRVtitittiVXRRMMMV\n"
++ "           `i|iitVtXt+=||++++|++++|||+++iiiVVXVRXRRRV+=|tttttttiRRRMMM|\n"
++ "             i+++|+==++++++++++++++|||||||||itVVVViitt|+,,+,,=,+|itVX'\n"
++ "              |+++++.,||+|++++=+++++++|+|||||iitt||i||ii||||||itXt|\n"
++ "              t||+++,.=i+|+||+++++++++++++|i|ittiiii|iiitttttXVXRX|\n"
++ "              :||+++++.+++++++++|++|++++++|||iii||+:,:.-+:+|iViVXV\n"
++ "              iii||+++=.,+=,=,==++++++++++|||itttt|itiittXRXXXitV'\n"
++ "             ;tttii||++,.,,,.,,,,,=++++++++++|iittti|iiiiVXXXXXXV\n"
++ "            tVtttiii||++++=,,.  . ,,,=+++++++|itiiiiiii||||itttVt\n"
++ "           tVVttiiiii||||++++==,. ..,.,+++=++iiiiiitttttVVXXRRXXV\n"
++ "        ..ttVVttitttii||i|||||+|+=,.    .,,,,==+iittVVVXRRMXRRRV\n"
++ "...'''ittitttttitVttttiiiiii|ii|++++=+=..... ,.,,||+itiVVXXVXV\n"
++ "      ,|iitiiitttttttiiiii||ii||||||||+++++,.i|itVt+,,=,==.........\n"
++ "        ,|itiiiVtVtiii||iiiiii|||||||++||||tt|VXXRX|  ....  ..     ' ' '\n"
++ "          ,,i|ii||i||+|i|i|iiiiiiii||||ittRVVXRXRMX+, .  ...   .        ,\n"
++ "    .       .,+|++|||||ii|i|iiiitttVVttXVVXVXRRRRXt+. .....  . .      ,. .\n"
++ "  . .          ,,++|||||||i|iiitVVVXXXXVXXVXXRRRV+=,.....  ....  .      ..\n"
++ "                  .,,++|||i|iittXXXXRMViRXXXXRVt+=, ..    .......       ..\n"
++ "                   ,XX+.=+++iitVVXXXRXVtXXVRRV++=,..... .,, .            .\n"
++ "            ....       +XX+|i,,||tXRRRXVXti|+++,,. .,,. . . ...     . ....\n"
++ "  . .          .      ..  ..........++,,..,...,.... ..             .. ...\n"
+);
 
                         break;
                     default:
-                        console.println("You should press either 'y' for yes, or 'n' "
+                        console.println("You should press either 'y' for "
+                                + "yes, or 'n' "
                                 + "for no.");
                         break;
                 }
@@ -265,7 +276,7 @@ public class CropsView {
             do {
                 TimeUnit.SECONDS.sleep(1);
                 console.println("\nHow many bushels would you like to use "
-                        + "to plant? \n\n\n");
+                        + "to plant? \n");
                 bushelsToSpend = Integer.parseInt(keyboard.readLine());
                 try {
                     CropsControl.plantCrops(bushelsToSpend, theGame.getCrops());
@@ -401,12 +412,14 @@ public class CropsView {
         console.format("You have planted %2d crops this year\n"
                 , theCrops.getPlanted());
         TimeUnit.SECONDS.sleep(1);
-        console.format("%2d People have starved at Your command\n"
+        console.format("You have lost %2d People due to starvation\n"
                 , theCrops.getStarvedPeople());
         TimeUnit.SECONDS.sleep(1);
     
-    } catch (Exception me) {
-            console.println(me.getMessage());
-        }
-}
+        } catch (Exception me) {
+                console.println(me.getMessage());
+            }
+    }
+    
+ 
 }

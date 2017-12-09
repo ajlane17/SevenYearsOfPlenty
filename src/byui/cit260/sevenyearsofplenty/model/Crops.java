@@ -43,7 +43,7 @@ public class Crops implements Serializable {
     }
 
     public void setYear(int year) {
-        this.year += year;
+        this.year = year;
     }
     
     public int setStarvedPeople(int newStarvedPeople) {

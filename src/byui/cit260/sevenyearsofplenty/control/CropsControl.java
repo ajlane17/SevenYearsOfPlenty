@@ -199,4 +199,11 @@ public class CropsControl {
     public static int calcLandCost() {
         return 10;
     }
+    
+       public static void yearCounter(Crops theCropsObj) {
+        int currentYear = theCropsObj.getYear();
+        int newYear = currentYear + 1;
+        theCropsObj.setYear(newYear);
+    }
+    
 }
