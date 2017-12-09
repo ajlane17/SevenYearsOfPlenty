@@ -37,7 +37,7 @@ public class CropsView {
         GameControl.createPlayer(playerName);
         GameControl.createCrops();
         GameControl.createPlayerMap(5, 5);
-
+        
         console.println("\n\n\n\n");
         console.println(playerName + ", you have been appointed "
                 + "overseer for your");
@@ -141,13 +141,19 @@ public class CropsView {
         int reqNutrition = 20;
         int bushels = 0;
         int Population = theGame.getCrops().getPopulation();
-        console.println("\n\n\n# You must feed the People #\n"
-                + "Your attention is required, as "
-                + "We must allocate rations for the People. \n"
-                + "You must decide how much You will feed the People. \n"
-                + "You should enter a whole number for the bushels that will \n"
-                + "be distributed for the year. \n "
-                + "please enter Your decision : ");
+                TimeUnit.SECONDS.sleep(1);
+        console.println("\n\n\n# You must feed the People #\n\n\n");
+                TimeUnit.SECONDS.sleep(1);
+        console.println("Your attention is required, as "
+                + "We must allocate rations for the People. \n");
+                TimeUnit.SECONDS.sleep(1);
+        console.println("You must decide how much You will feed the People. \n"
+        );
+                TimeUnit.SECONDS.sleep(1);
+        console.println("You should enter a whole number for the bushels that "
+                + "will be distributed for the year. \n ");
+                TimeUnit.SECONDS.sleep(1);
+        console.println("please enter Your decision : ");
         try {
             bushels = Integer.parseInt(keyboard.readLine());
         } catch (Exception e) {
@@ -190,7 +196,7 @@ public class CropsView {
                                 + "please enter the amount here: ");
                         break;
                     case 'm':
-                        console.println("You have chosen wisely...\n"
+                        console.println("You have made it so, far...\n"
                                 + "                  xxxXRRRMMMMMMMMMMMMMMMxxx,.\n"
                                 + "              xXXRRRRRXXXVVXVVXXXXXXXRRRRRMMMRx,\n"
                                 + "            xXRRXRVVVVVVVVVVVVVVVXXXXXRXXRRRMMMMMRx.\n"
@@ -233,7 +239,7 @@ public class CropsView {
                                 + "                   ,XX+.=+++iitVVXXXRXVtXXVRRV++=,..... .,, .            .\n"
                                 + "            ....       +XX+|i,,||tXRRRXVXti|+++,,. .,,. . . ...     . ....\n"
                                 + "  . .          .      ..  ..........++,,..,...,.... ..             .. ...\n"
-                                + "You have made it so... far...");
+                                );
 
                         break;
                     default:
@@ -257,7 +263,9 @@ public class CropsView {
         console.println("REMINDER: Two acres can be planted per bushel.");
         try {
             do {
-                console.println("\nHow many bushels would you like to use to plant? ");
+                TimeUnit.SECONDS.sleep(1);
+                console.println("\nHow many bushels would you like to use "
+                        + "to plant? \n\n\n");
                 bushelsToSpend = Integer.parseInt(keyboard.readLine());
                 try {
                     CropsControl.plantCrops(bushelsToSpend, theGame.getCrops());
@@ -273,7 +281,6 @@ public class CropsView {
     }
 
     public static void harvestWheatView() {
-
         console.println("\n# THIS IS A REPORT OF THE HARVEST #");
 
         int rats = CropsControl.harvestCrops(theGame.getCrops());
@@ -284,10 +291,12 @@ public class CropsView {
 
         console.format("You planted %2d acres and yielded %2d crops per acre.\n",
                 planted, cropYield);
-        console.format("Rates ate: %2d\n", rats);
+ 
+        console.format("looks like the rats have eaten %3d bushels\n" , rats);
+
         console.format("The harvest was: %2d\n\n", harvest);
     }
-
+     
     public static void payPharoahView() {
 
         int pharoahsCut;
@@ -301,7 +310,7 @@ public class CropsView {
 
         console.println("\n# PAYING PHAROAH #");
         console.println("The Pharoah is paid before the people are fed.");
-        console.format("Pharoah total take is now %2d bushels.\n\n", pharoahsCut);
+        console.format("Pharoah has now taken %3d bushels.\n\n", pharoahsCut);
 
     }
 
@@ -356,23 +365,48 @@ public class CropsView {
 
     }
 
-    public static void displayCropsReportView() {
-
+    public static void displayCropsReportView() throws InterruptedException {
+        
         Crops theCrops = theGame.getCrops();
-
+        try {
         console.println("###########################\n"
                 + "#       CROP REPORT       #\n"
                 + "###########################\n");
-        console.format("YEAR: %2d\n", theCrops.getYear());
-        console.format("POPULATION: %2d\n", theCrops.getPopulation());
-        console.format("ACRES: %2d\n", theCrops.getAcres());
-        console.format("CROP YIELD: %2d\n", theCrops.getCropYield());
-        console.format("WHEAT IN STORE: %2d\n", theCrops.getWheatInStore());
-        console.format("HARVEST: %2d\n", theCrops.getHarvest());
-        console.format("PHAROAH'S SHARE: %2d\n", theCrops.getPharoahsShare());
-        console.format("FED: %2d\n", theCrops.getFed());
-        console.format("PLANTED: %2d\n", theCrops.getPlanted());
-        console.format("STARVED PEOPLE: %2d\n", theCrops.getStarvedPeople());
-    }
-
+        TimeUnit.SECONDS.sleep(1);
+        console.format("You are in year number%2d of the seven years of plenty"
+                + "\n"
+                , theCrops.getYear());
+        TimeUnit.SECONDS.sleep(1);
+        console.format("Your Population consists of %2d People at this time\n"
+                , theCrops.getPopulation());
+        TimeUnit.SECONDS.sleep(1);
+        console.format("You have %2d total acres that are available to plant\n"
+                , theCrops.getAcres());
+        TimeUnit.SECONDS.sleep(1);
+        console.format("Your crops did yield %2d bushels this harvest\n"
+                , theCrops.getCropYield());
+        TimeUnit.SECONDS.sleep(1);
+        console.format("You have %2d bushels of wheat in store\n"
+                , theCrops.getWheatInStore());
+        TimeUnit.SECONDS.sleep(1);
+        console.format("Your harvest produced %2d bushels\n"
+                , theCrops.getHarvest());
+        TimeUnit.SECONDS.sleep(1);
+        console.format("Pharoah's share has amounted to %2d total bushels\n"
+                , theCrops.getPharoahsShare());
+        TimeUnit.SECONDS.sleep(1);
+        console.format("You have fed %d People\n"
+                , theCrops.getFed());
+        TimeUnit.SECONDS.sleep(1);
+        console.format("You have planted %2d crops this year\n"
+                , theCrops.getPlanted());
+        TimeUnit.SECONDS.sleep(1);
+        console.format("%2d People have starved at Your command\n"
+                , theCrops.getStarvedPeople());
+        TimeUnit.SECONDS.sleep(1);
+    
+    } catch (Exception me) {
+            console.println(me.getMessage());
+        }
+}
 }
