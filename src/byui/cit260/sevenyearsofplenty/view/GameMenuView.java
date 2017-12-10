@@ -6,6 +6,7 @@
 package byui.cit260.sevenyearsofplenty.view;
 
 
+import byui.cit260.sevenyearsofplenty.control.CropsControl;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -65,6 +66,7 @@ public class GameMenuView extends MenuView {
         CropsView.showStarvedView();
         CropsView.growPopulationView();
         CropsView.displayCropsReportView();
+        CropsControl.nextTurn();
     }
     
     public static void toolsView(){

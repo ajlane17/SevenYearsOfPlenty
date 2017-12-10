@@ -7,14 +7,21 @@ package byui.cit260.sevenyearsofplenty.control;
 
 import byui.cit260.sevenyearsofplenty.exceptions.CropsControlException;
 import byui.cit260.sevenyearsofplenty.model.Crops;
+import byui.cit260.sevenyearsofplenty.model.Game;
+import byui.cit260.sevenyearsofplenty.view.CropsView;
+import byui.cit260.sevenyearsofplenty.view.MainMenuView;
 import static java.lang.Math.round;
 import java.util.concurrent.ThreadLocalRandom;
+import sevenyearsofplenty.SevenYearsOfPlenty;
 
 /**
  *
  * @author Dennis, Vanessa, Adrian
  */
 public class CropsControl {
+    
+    private static final int LAST_TURN = 7;
+    private static final Game THE_GAME = SevenYearsOfPlenty.getGame();
 
     public static void payPharoah(Crops theCropsObj)
             throws CropsControlException {
@@ -200,10 +207,17 @@ public class CropsControl {
         return 10;
     }
     
-       public static void yearCounter(Crops theCropsObj) {
-        int currentYear = theCropsObj.getYear();
-        int newYear = currentYear + 1;
-        theCropsObj.setYear(newYear);
+    public static void nextTurn() {
+        
+        Crops theCropsObj = THE_GAME.getCrops();
+        int currYear = theCropsObj.getYear();
+        
+        if (currYear == LAST_TURN) {
+            CropsView.endGameView();
+            System.exit(0);
+        } else {
+            currYear++;
+            theCropsObj.setYear(currYear);
+        }
     }
-    
 }

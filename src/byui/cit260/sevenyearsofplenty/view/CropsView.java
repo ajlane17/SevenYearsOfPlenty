@@ -11,7 +11,7 @@ import byui.cit260.sevenyearsofplenty.exceptions.CropsControlException;
 import byui.cit260.sevenyearsofplenty.model.Crops;
 import byui.cit260.sevenyearsofplenty.model.Game;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 import sevenyearsofplenty.SevenYearsOfPlenty;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
@@ -163,7 +163,7 @@ protected static final PrintWriter console = SevenYearsOfPlenty.getOutFile();
             console.println("Error reading input: " + e.getMessage());
         }
         boolean exit = false;
-        TimeUnit.SECONDS.sleep(1);
+        //TimeUnit.SECONDS.sleep(1);
         console.println("You have decided to feed " + bushels + " bushels to "
                 + Population + " People for this year, \nenter 'y' if "
                 + "You agree,"
@@ -176,7 +176,7 @@ protected static final PrintWriter console = SevenYearsOfPlenty.getOutFile();
                 word = word.trim();
                 char letter = word.charAt(0);
 
-                TimeUnit.SECONDS.sleep(1);
+                //TimeUnit.SECONDS.sleep(1);
                 switch (letter) {
                     case 'y':
                         try {
@@ -421,5 +421,17 @@ case 'm':
             }
     }
     
- 
+    public static void endGameView() {
+        console.println("\n\nThanks for playing!");
+        console.println("\nYour final result:");
+        displayCropsReportView();
+        GameControl.createCrops();
+        console.println("\n\n\nPress ENTER to exit...");
+        try {
+            keyboard.read();
+        } catch (Exception e) {
+            ErrorView.display("CropsView", e.getMessage());
+        }
+    }
+
 }
