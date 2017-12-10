@@ -11,7 +11,7 @@ import byui.cit260.sevenyearsofplenty.exceptions.CropsControlException;
 import byui.cit260.sevenyearsofplenty.model.Crops;
 import byui.cit260.sevenyearsofplenty.model.Game;
 import java.util.Random;
-//import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeUnit;
 import sevenyearsofplenty.SevenYearsOfPlenty;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
@@ -424,10 +424,10 @@ case 'm':
     public static void endGameView() {
         console.println("\n\nThanks for playing!");
         console.println("\nYour final result:");
-        displayCropsReportView();
-        GameControl.createCrops();
         console.println("\n\n\nPress ENTER to exit...");
         try {
+            displayCropsReportView();
+            GameControl.createCrops();
             keyboard.read();
         } catch (Exception e) {
             ErrorView.display("CropsView", e.getMessage());
